@@ -89,4 +89,42 @@ class usuarioDAO {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
+    
+    function seleccionarxDNI($dni){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
+        $sql ="select * from usuario where dni_usuario=? limit 1";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_bind_param($stmt,"s",$dni);
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        if($row = mysqli_fetch_assoc($resultData)){
+            $cli= new usuario($row['idusuario'], $row['ape_usuario'],$row['nom_usuario'],$row['direccion_usuario'],$row['dni_usuario'],$row['nacimiento_usuario'],$row['telefono_usuario'],
+                    $row['correo_usuario'],$row['idarea'],$row['usu_usuario'],$row['pass_usuario']);
+            return $cli;
+        }else{
+            return false;
+        }
+    }
+    
+    function seleccionarxUSUARIO($dni){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
+        $sql ="select * from usuario where usu_usuario=? limit 1";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_bind_param($stmt,"s",$dni);
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        if($row = mysqli_fetch_assoc($resultData)){
+            $cli= new usuario($row['idusuario'], $row['ape_usuario'],$row['nom_usuario'],$row['direccion_usuario'],$row['dni_usuario'],$row['nacimiento_usuario'],$row['telefono_usuario'],
+                    $row['correo_usuario'],$row['idarea'],$row['usu_usuario'],$row['pass_usuario']);
+            return $cli;
+        }else{
+            return false;
+        }
+    }
 }
