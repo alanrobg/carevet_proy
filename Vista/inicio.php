@@ -99,7 +99,7 @@ if(isset($_GET['data'])){
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="./inicio.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-200 nodeco" id="fuente1">Inicio</a></li>
             <li><a href="" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Registros</a></li>
-            <li><a href="./Dashboard/Cliente_lista.php.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Clientes</a></li>
+            <li><a href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Clientes</a></li>
             <li><a href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Mascotas</a></li>
             <li><a href="./Dashboard/Usuario_lista.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Usuarios</a></li>
         </ul>

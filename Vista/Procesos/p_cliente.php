@@ -12,6 +12,7 @@ include_once '../Dashboard/session.php';
 //Recursos
 include_once '../../DAO/clienteDAO.php';
 include_once '../../Modelo/cliente.php';
+
 $clienteDAO = new clienteDAO();
 //---------------------------------------------------------------
 //---------------------------------------------------------------
