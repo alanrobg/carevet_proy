@@ -50,8 +50,17 @@ include_once './session.php';
                     <h1 class="display-6 fw-bold text-black izquierdo">Usuario Registrados</h1>
                 </div>
             </div>
+            <?php include './Modal/Usuario_new.php'; ?>
+            <style>
+                .filtro{
+                    display: none;
+                }
+            </style>
                 <div class="row my-3">
                     <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div style="display: flex; justify-content: flex-end">
+                            <button data-bs-toggle="modal" data-bs-target="#newUsuario" class="btn btn-primary">Crear Usuario</button>
+                        </div>
                         <table border="1" width="100%" class="ttable">
                             <thead>
                                 <tr>
@@ -82,8 +91,10 @@ include_once './session.php';
                                     <td><?=$nom?></td>
                                     <td><?=$dni?></td>
                                     <td><?=$area?></td>
-                                    <td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#DetallesUsuario<?=$id?>">
-                                                Detalles</button></td>
+                                    <td><div style="display:flex; flex-direction: row; justify-content: space-around">
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#DetallesUsuario<?=$id?>">
+                                            Detalles</button>
+                                        <button class="btn btn-danger" type="button">Eliminar</button></div></td>
                                     <div class="modal fade" id="DetallesUsuario<?=$id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-title">
                                             <div class="modal-content">
