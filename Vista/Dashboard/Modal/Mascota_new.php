@@ -48,8 +48,20 @@
                         <label style="flex-basis: 40%" class="input-group-text">Esterilizado:</label>
                         <select style="flex-basis: 60%" class="form-select"  name="esterilizado" required="" required="">
                             <option value="">Seleccione</option>
-                            <option value="Si">Esterilizado</option>
-                            <option value="No">No Esterilizado</option>
+                            <?php
+                            foreach ($esterilizacionDAO->seleccionar() as $kest=>$dest) {
+                                $cad = "";
+                                $cad2 = "";
+                                if($dest->getIdesterilizacion()==$cad){
+                                    $cad2 = "selected";
+                                }else{
+                                    $cad2 = "";
+                                }
+                                /*DATOS DEL CLIENTE*/
+                                $name = $dest->getNom_esterilizacion();
+                                echo "<option value=".$dest->getIdesterilizacion()." ".$cad2.">"." ".$name."</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                     

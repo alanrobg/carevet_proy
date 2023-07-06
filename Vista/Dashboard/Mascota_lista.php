@@ -27,6 +27,15 @@ include_once '../../Modelo/cliente.php';
 $clienteDAO = new clienteDAO();
 //---------------------------------------------------------------
 
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/esterilizacionDAO.php';
+include_once '../../Modelo/esterilizacion.php';
+
+$esterilizacionDAO = new esterilizacionDAO();
+//---------------------------------------------------------------
+
+
 ?>
 <html lang="en" >
 <head>
@@ -66,6 +75,7 @@ $clienteDAO = new clienteDAO();
                 </div>
             </div>
             <?php include './Modal/Mascota_new.php';?>
+            <?php include './Modal/Mascota_update.php';?>
             <style>
                 .filtro{
                     display: none;
@@ -82,8 +92,8 @@ $clienteDAO = new clienteDAO();
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre mascota</th>
-                                    <th>CLIENTE</th>
-                                    <th>RAZA</th>
+                                    <th>Cliente</th>
+                                    <th>Raza</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -94,6 +104,7 @@ $clienteDAO = new clienteDAO();
                                     $nom = $dm->getNom_mascota();
                                     $idcli = $dm->getIdcliente();
                                     $cliente = $clienteDAO->seleccionar_idcliente(new cliente($dm->getIdcliente(), null, null, null, null, null, null, null, null, null));
+                                    $esteri = $esterilizacionDAO->seleccionar_idesterilizacion(new esterilizacion($dm->getIdesterilizacion(), null))->getNom_esterilizacion();
                                     $nomcli = $cliente->getNombre_cli();
                                     $apecli = $cliente->getApellido_cli();
                                     $raza = $dm->getIdraza();
@@ -142,7 +153,7 @@ $clienteDAO = new clienteDAO();
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Esterilizado:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$dm->getEsterilizado_mascota()?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$esteri?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Raza:</label>

@@ -20,10 +20,10 @@ class mascota {
     private $color_mascota;
     private $registro_mascota;
     private $foto_mascota;
-    private $esterilizado_mascota;
+    private $idesterilizacion;
     private $idraza;
     
-    function __construct($idmascota, $nom_mascota, $idcliente, $nacimiento_mascota, $color_mascota, $registro_mascota, $foto_mascota, $esterilizado_mascota, $idraza) {
+    function __construct($idmascota, $nom_mascota, $idcliente, $nacimiento_mascota, $color_mascota, $registro_mascota, $foto_mascota, $idesterilizacion, $idraza) {
         $this->idmascota = $idmascota;
         $this->nom_mascota = $nom_mascota;
         $this->idcliente = $idcliente;
@@ -31,7 +31,7 @@ class mascota {
         $this->color_mascota = $color_mascota;
         $this->registro_mascota = $registro_mascota;
         $this->foto_mascota = $foto_mascota;
-        $this->esterilizado_mascota = $esterilizado_mascota;
+        $this->idesterilizacion = $idesterilizacion;
         $this->idraza = $idraza;
     }
 
@@ -63,8 +63,8 @@ class mascota {
         return $this->foto_mascota;
     }
 
-    function getEsterilizado_mascota() {
-        return $this->esterilizado_mascota;
+    function getIdesterilizacion() {
+        return $this->idesterilizacion;
     }
 
     function getIdraza() {
@@ -99,8 +99,8 @@ class mascota {
         $this->foto_mascota = $foto_mascota;
     }
 
-    function setEsterilizado_mascota($esterilizado_mascota) {
-        $this->esterilizado_mascota = $esterilizado_mascota;
+    function setIdesterilizacion($idesterilizacion) {
+        $this->idesterilizacion = $idesterilizacion;
     }
 
     function setIdraza($idraza) {

@@ -15,7 +15,7 @@ class mascotaDAO {
     //put your code here
     function seleccionar_idmascota(mascota $mascota){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
-        $sql = "select ape_usuario, nom_mascota, idcliente, nacimiento_mascota, color_mascota, registro_mascota, foto_mascota, esterilizado, idraza from mascota where idmascota= ?";
+        $sql = "select * from mascota where idmascota= ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
@@ -64,29 +64,29 @@ class mascotaDAO {
         $nac = $mascota->getNacimiento_mascota();
         $color = $mascota->getColor_mascota();
         $foto = $mascota->getFoto_mascota();
-        $esteri = $mascota->getEsterilizado_mascota();
+        $esteri = $mascota->getIdesterilizacion();
         $idraza = $mascota->getIdraza();
-        mysqli_stmt_bind_param($stmt, "sissssi",$nom,$idcli,$nac,$color,$foto,$esteri,$idraza);
+        mysqli_stmt_bind_param($stmt, "sisssii",$nom,$idcli,$nac,$color,$foto,$esteri,$idraza);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
     
     function actualizar(mascota $mascota){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
-        $sql =" UPDATE mascota SET nom_mascota=?,idcliente=?,nacimiento_mascota=?,color_mascota=?,foto_mascota=?,esterilizado=?
-        * ,idraza = ? WHERE idmascota = ?";
+        $sql =" UPDATE mascota SET nom_mascota=?,idcliente=?,nacimiento_mascota=?,color_mascota=?,foto_mascota=?,esterilizado=? ,idraza = ? WHERE idmascota = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
+        $id = $mascota->getIdmascota();
         $nom = $mascota->getNom_mascota();
         $idcli = $mascota->getIdcliente();
         $nac = $mascota->getNacimiento_mascota();
         $color = $mascota->getColor_mascota();
         $foto = $mascota->getFoto_mascota();
-        $esteri = $mascota->getEsterilizado_mascota();
+        $esteri = $mascota->getIdesterilizacion();
         $idraza = $mascota->getIdraza();
-        mysqli_stmt_bind_param($stmt, "sissssii",$nom,$idcli,$nac,$color,$foto,$esteri,$idraza);
+        mysqli_stmt_bind_param($stmt, "sisssiii", $nom, $idcli, $nac, $color, $foto, $esteri, $idraza, $id);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
