@@ -101,9 +101,9 @@ class usuarioDAO {
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);
         if($row = mysqli_fetch_assoc($resultData)){
-            $cli= new usuario($row['idusuario'], $row['ape_usuario'],$row['nom_usuario'],$row['direccion_usuario'],$row['dni_usuario'],$row['nacimiento_usuario'],$row['telefono_usuario'],
-                    $row['correo_usuario'],$row['idarea'],$row['usu_usuario'],$row['pass_usuario']);
-            return $cli;
+            $usuario = new usuario($row['idusuario'],$row['ape_usuario'], $row['nom_usuario'], $row['dni_usuario'], $row['direccion_usuario'], $row['nacimiento_usuario'],
+                    $row['telefono_usuario'], $row['correo_usuario'], $row['contrato_usuario'], $row['idarea'], $row['usu_usuario'], $row['pass_usuario']);
+            return $usuario;
         }else{
             return false;
         }
@@ -120,9 +120,9 @@ class usuarioDAO {
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);
         if($row = mysqli_fetch_assoc($resultData)){
-            $cli= new usuario($row['idusuario'], $row['ape_usuario'],$row['nom_usuario'],$row['direccion_usuario'],$row['dni_usuario'],$row['nacimiento_usuario'],$row['telefono_usuario'],
-                    $row['correo_usuario'],$row['idarea'],$row['usu_usuario'],$row['pass_usuario']);
-            return $cli;
+            $usuario = new usuario($row['idusuario'],$row['ape_usuario'], $row['nom_usuario'], $row['dni_usuario'], $row['direccion_usuario'], $row['nacimiento_usuario'],
+                    $row['telefono_usuario'], $row['correo_usuario'], $row['contrato_usuario'], $row['idarea'], $row['usu_usuario'], $row['pass_usuario']);
+            return $usuario;
         }else{
             return false;
         }

@@ -13,16 +13,12 @@
                     type="button" style="margin-top: 10px; margin-left: 15px">
                 <img src="../recursos/iconos/ajuste.png" width="50px" height="50px">
             </button>
-            <button class="points" id="logo-header" data-bs-toggle="offcanvas" data-bs-target="#id" aria-controls="offcanvasExample"
-                    type="button">
-                <img src="../recursos/iconos/menu.png" width="50px" height="50px">
-            </button>
             <ul class="dropdown-menu  dropdown-menu-dark">
                 <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="">Registros</a></li>
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
-                <li><a class="dropdown-item" href="">Mascotas</a></li>
-                <li><a class="dropdown-item" href="">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
+                <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
             </ul>
         </div>   
 <div class="container">
@@ -46,9 +42,9 @@
             <ul class="dropdown-menu  dropdown-menu-dark">
                 <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="">Registros</a></li>
-                <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
-                <li><a class="dropdown-item" href="">Mascotas</a></li>
-                <li><a class="dropdown-item" href="">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
+                <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
+                <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
             </ul>
         </div>
     </div>

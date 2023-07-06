@@ -90,8 +90,8 @@ if(isset($_GET['data'])){
                 <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="">Registros</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
-                <li><a class="dropdown-item" href="">Mascotas</a></li>
-                <li><a class="dropdown-item" href="">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
             </ul>
         </div>   
 <div class="container">
@@ -116,8 +116,8 @@ if(isset($_GET['data'])){
                 <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="">Registros</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
-                <li><a class="dropdown-item" href="">Mascotas</a></li>
-                <li><a class="dropdown-item" href="">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
             </ul>
         </div>
     </div>
