@@ -1,7 +1,7 @@
 <?php
 
 /* 
- * Proy. S&S Travels International
+ * Proyecto CareVet Veterinaria
  */
 
 
