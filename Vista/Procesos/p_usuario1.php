@@ -44,11 +44,11 @@ if($accion=="create"){
 }
 
 if($accion=="update"){
-    $usuario = new usuario(null, $_POST['apellido_usu'], $_POST['nombre_usu'], $_POST['dni_usu'], $_POST['direccion'], $_POST['nacimiento'], $_POST['telefono'],
+    $usuario = new usuario($_POST['id_usu'], $_POST['apellido_usu'], $_POST['nombre_usu'], $_POST['dni_usu'], $_POST['direccion'], $_POST['nacimiento'], $_POST['telefono'],
             $_POST['correo'], $_POST['contrato'], $_POST['idarea'], $_POST['usuario'], $_POST['password']);
     
-    $usuarioDNI = $usuarioDAO->seleccionarxDNIupdate($_REQUEST['id_usu'], $_POST['dni_usu']);
-    $usuarioUSU = $usuarioDAO->seleccionarxUSUARIOupdate($_REQUEST['id_usu'], $_POST['usuario_usu']);
+    $usuarioDNI = $usuarioDAO->seleccionarxDNIupdate($_POST['id_usu'], $_POST['dni_usu']);
+    $usuarioUSU = $usuarioDAO->seleccionarxUSUARIOupdate($_POST['id_usu'], $_POST['usuario']);
     
     if(empty($usuarioDNI) && empty($usuarioUSU)){
         $usuarioDAO->actualizar($usuario);

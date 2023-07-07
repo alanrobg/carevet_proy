@@ -53,7 +53,10 @@ include_once '../../Modelo/usuario_area.php';
                     <h1 class="display-6 fw-bold text-black izquierdo">Usuario Registrados</h1>
                 </div>
             </div>
-            <?php include './Modal/Usuario_new.php'; ?>
+            <?php 
+            include './Modal/Usuario_new.php';
+            include './Modal/Usuario_update.php';
+            ?>
             <style>
                 .filtro{
                     display: none;
