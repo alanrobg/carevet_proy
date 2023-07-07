@@ -19,8 +19,7 @@ include_once '../../Modelo/usuario_area.php';
 <html lang="en" >
 <head>
     <?php include './links.php';?>
-    <title>SyS Company</title> 
-
+    <title>CareVet Veterinaria</title>
 </head>
 
 <!-------------------------------------------------SCRIPT PARA USU_DUPLIADOS------------------------------------------------->

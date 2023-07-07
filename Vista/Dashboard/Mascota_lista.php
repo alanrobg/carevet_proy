@@ -40,7 +40,7 @@ $esterilizacionDAO = new esterilizacionDAO();
 <html lang="en" >
 <head>
     <?php include './links.php';?>
-    <title>SyS Company</title> 
+    <title>CareVet Veterinaria</title>
 
 </head>
 
