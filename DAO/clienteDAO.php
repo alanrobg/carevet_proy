@@ -43,7 +43,7 @@ class clienteDAO {
     }
     
     function seleccionarxDNIupdate($id, $dni){
-        $cn = mysqli_connect("localhost", "root", "", "systravel");
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
         $sql ="select * from cliente where idcliente != ? AND dni_cli =? limit 1";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
