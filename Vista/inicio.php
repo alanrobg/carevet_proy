@@ -92,6 +92,7 @@ if(isset($_GET['data'])){
                 <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
             </ul>
         </div>   
 <div class="container">
@@ -118,6 +119,7 @@ if(isset($_GET['data'])){
                 <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
             </ul>
         </div>
     </div>

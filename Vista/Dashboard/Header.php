@@ -19,6 +19,7 @@
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
             </ul>
         </div>   
 <div class="container">
@@ -29,6 +30,7 @@
             <li><a href="./Cliente_lista.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Clientes</a></li>
             <li><a href="./Mascota_lista.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Mascotas</a></li>
             <li><a href="./Usuario_lista.php?data=<?=$encoded_data?>" class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300 nodeco" id="fuente1">Usuarios</a></li>
+            
         </ul>
         <div class="text-end dropdown flex items-center">
             <div class="flex items-center w-full h-12 px-3 mt-2 rounded nodeco show-desktop">
@@ -45,6 +47,7 @@
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
             </ul>
         </div>
     </div>
