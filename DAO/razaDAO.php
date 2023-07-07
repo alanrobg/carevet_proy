@@ -51,6 +51,25 @@ class razaDAO {
         }
     }
     
+    function seleccionarxEspecie(raza $raza){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
+        $sql =" select * from raza where idespecie=?";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        $idespecie = $raza->getidespecie();
+        mysqli_stmt_bind_param($stmt,"i",$idespecie);
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        if($row = mysqli_fetch_assoc($resultData)){
+            $raza= new raza($row['idraza'], $row['nom_raza'], $row['idespecie']);
+            return $raza;
+        }else{
+            return false;
+        }
+    }
+    
     function crear(raza $raza){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
         $sql ="INSERT INTO raza (nom_raza, idespecie) VALUES (?,?)";

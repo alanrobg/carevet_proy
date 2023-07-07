@@ -77,7 +77,22 @@
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">Raza:</label>
-                        <input style="flex-basis: 60%" type="text" class="form-control" name="raza" value="<?=$dmu->getIdraza()?>" required="">
+                        <select style="flex-basis: 60%" class="form-select"  name="raza" required="" required="">
+                            <option value="">Seleccione</option>
+                            <?php
+                            foreach ($razaDAO->seleccionar() as $knraz=>$dnraz) {
+                                $cad = "";
+                                $cad2 = "";
+                                if($dnraz->getIdraza()==$dmu->getIdraza()){
+                                    $cad2 = "selected";
+                                }else{
+                                    $cad2 = "";
+                                }
+                                /*DATOS DEL CLIENTE*/
+                                echo "<option value=".$dnraz->getIdraza()." ".$cad2.">"." ".$dnraz->getNom_raza()."</option>";
+                                }
+                            ?>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
