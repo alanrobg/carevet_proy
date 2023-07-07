@@ -15,6 +15,8 @@ include_once './session.php';
 include_once '../../DAO/usuario_areaDAO.php';
 include_once '../../Modelo/usuario_area.php';
 
+
+$usuarioDAO_area = new usuario_areaDAO();
 ?>
 <html lang="en" >
 <head>

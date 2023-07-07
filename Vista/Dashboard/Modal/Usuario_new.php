@@ -49,7 +49,6 @@
                           <select class="form-select"  name="idarea" required="" >
                                 <option value="">Seleccione un tipo</option>
                                 <?php
-                                $usuarioDAO_area = new usuario_areaDAO();
                                 foreach ($usuarioDAO_area->seleccionar() as $kcliup => $dcliup) {
                                     echo "<option value=" . $dcliup->getIdusuario_area() . ">" . $dcliup->getNom_area() . "</option>";
                                 }
