@@ -127,4 +127,68 @@ class usuarioDAO {
             return false;
         }
     }
+    
+    function actualizar(usuario $user){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
+        $sql =" UPDATE usuario SET ape_usuario=?,nom_usuario=?,dni_usuario=?,direccion_usuario=?,nacimiento_usuario=?,telefono_usuario=?"
+                . ",correo_usuario=?,contrato_usuario=?,idarea=?,usu_usuario=?,pass_usuario=? WHERE idusuario=?";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        $ape_usu = $user->getApellido_usuario();
+        $nom_usu = $user->getNombre_usuario();
+        $dni_usu = $user->getDni_usuario();
+        $dir_usu = $user->getDireccion_usuario();
+        $nac_usu = $user->getNacimiento_usuario();
+        $telf_usu = $user->getTelefono_usuario();
+        $email_usu = $user->getCorreo_usuario();
+        $cont_usu = $user->getContrato_usuario();
+        $ida_usu = $user->getIdearea();
+        $usu_usu = $user->getUsu_usuario();
+        $hashedpwd = hash('sha256', $user->getPass_usuario());
+        $idusuario=$user->getIdusuario();
+        mysqli_stmt_bind_param($stmt, "ssssssssissi",$ape_usu,$nom_usu,$dni_usu,$dir_usu,$nac_usu,$telf_usu,$email_usu,$cont_usu,$ida_usu,
+                $usu_usu,$hashedpwd,$idusuario);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+    
+    function seleccionarxDNIupdate($id,$dni){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
+        $sql ="select * from usuario where idusuario != ? and dni_usuario=? limit 1";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_bind_param($stmt,"is",$id,$dni);
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        if($row = mysqli_fetch_assoc($resultData)){
+            $usuario = new usuario($row['idusuario'],$row['ape_usuario'], $row['nom_usuario'], $row['dni_usuario'], $row['direccion_usuario'], $row['nacimiento_usuario'],
+                    $row['telefono_usuario'], $row['correo_usuario'], $row['contrato_usuario'], $row['idarea'], $row['usu_usuario'], $row['pass_usuario']);
+            return $usuario;
+        }else{
+            return false;
+        }
+    }
+    
+    function seleccionarxUSUARIOupdate($id,$dni){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
+        $sql ="select * from usuario where idusuario != ? and usu_usuario=? limit 1";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_bind_param($stmt,"is",$id,$dni);
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        if($row = mysqli_fetch_assoc($resultData)){
+            $usuario = new usuario($row['idusuario'],$row['ape_usuario'], $row['nom_usuario'], $row['dni_usuario'], $row['direccion_usuario'], $row['nacimiento_usuario'],
+                    $row['telefono_usuario'], $row['correo_usuario'], $row['contrato_usuario'], $row['idarea'], $row['usu_usuario'], $row['pass_usuario']);
+            return $usuario;
+        }else{
+            return false;
+        }
+    }
 }

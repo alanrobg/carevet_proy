@@ -16,25 +16,27 @@ $error = "";
 <head>
     <meta charset="utf-8">
     <title>CareVet Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="recursos/estilo.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
-        <div>
-            <br><br><br><br>
-        </div>
-        <div class="container">
-        <h1>Inicio de sesión</h1>
+    
+    <img src="recursos/Login_1.jpg" class="imagen-fondo">
+        <div class="contenedor-login text-center shadow border p-3 mt-5 rounded">
+            
+            <div class="cabezera-login">
+                <img src="recursos/LOGIN2.png">
+                <h3 class="mb-4">Login</h3>
+            </div>
+            
         <form action="Procesos/p_usuario.php" method="post">
           <div class="form-group">
-            <label for="Name">Usuario</label>
-            <input type="text" class="form-control" id="Name" placeholder="Usuario" name="usuario_usu">
+            <input type="text" class="form-control mb-4" id="Name" placeholder="Usuario" name="usuario_usu">
           </div>
           <div class="form-group">
-            <label for="Password">Contraseña</label>
-            <input type="password" class="form-control" id="Password" placeholder="Contraseña" name="password_usu">
+            <input type="password" class="form-control mb-4" id="Password" placeholder="Contraseña" name="password_usu">
           </div>  
 
             <input type="submit" class="btn btn-primary" value="Ingresar">
