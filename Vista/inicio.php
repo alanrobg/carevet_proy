@@ -78,7 +78,7 @@ if(isset($_GET['data'])){
         <div class="dropdown">
             <form action="./inicio.php?data=<?=$encoded_data?>" method="Post" enctype="" >
                 <button class="izquierdo" id="logo-header">
-                    <img src="./recursos/Maki.jpg" style="margin-top: -20px" width="100px" height="100px">
+                    <img src="./recursos/specialities-03.png" style="margin-top: -20px" width="100px" height="100px">
                 </button>
             </form>
             
