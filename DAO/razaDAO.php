@@ -34,7 +34,7 @@ class razaDAO {
     
     function seleccionar_idraza(raza $raza){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria");
-        $sql =" select * from especie where idespecie=?";
+        $sql =" select * from raza where idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";

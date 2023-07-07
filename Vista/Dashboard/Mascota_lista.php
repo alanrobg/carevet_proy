@@ -36,6 +36,22 @@ $esterilizacionDAO = new esterilizacionDAO();
 //---------------------------------------------------------------
 
 
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/razaDAO.php';
+include_once '../../Modelo/raza.php';
+
+$razaDAO = new razaDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/especieDAO.php';
+include_once '../../Modelo/especie.php';
+
+$especieDAO = new especieDAO();
+//---------------------------------------------------------------
+
 ?>
 <html lang="en" >
 <head>
@@ -107,13 +123,14 @@ $esterilizacionDAO = new esterilizacionDAO();
                                     $esteri = $esterilizacionDAO->seleccionar_idesterilizacion(new esterilizacion($dm->getIdesterilizacion(), null))->getNom_esterilizacion();
                                     $nomcli = $cliente->getNombre_cli();
                                     $apecli = $cliente->getApellido_cli();
-                                    $raza = $dm->getIdraza();
+                                    $raza = $razaDAO->seleccionar_idraza(new raza($dm->getIdraza(), null, null));
+                                    $nomraza = $raza->getNom_raza();
                                 ?>
                                 <tr class="articulo">
                                     <td><?=$id?></td>
                                     <td><?=$nom?></td>
                                     <td><?=$nomcli." ".$apecli?></td>
-                                    <td><?=$raza?></td>
+                                    <td><?=$nomraza?></td>
                                     <td><div style="display:flex; flex-direction: row; justify-content: space-around">
                                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsmascota<?=$id?>">
                                             Detalles</button>
