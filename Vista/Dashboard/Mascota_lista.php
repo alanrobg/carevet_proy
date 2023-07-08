@@ -125,16 +125,16 @@ $especieDAO = new especieDAO();
                                     $esteri = $esterilizacionDAO->seleccionar_idesterilizacion(new esterilizacion($dm->getIdesterilizacion(), null))->getNom_esterilizacion();
                                     $nomcli = $cliente->getNombre_cli();
                                     $apecli = $cliente->getApellido_cli();
-                                    $raza = $razaDAO->seleccionar_idraza(new raza($dm->getIdraza(), null, null));
-                                    $especie = $especieDAO->seleccionar_idespecie(new especie($raza->getIdespecie(), null));
+                                    $raza = $razaDAO->seleccionar_idraza(new raza($dm->getIdraza() ? $dm->getIdraza() : '', null, null)) ;
+                                    $especie = $especieDAO->seleccionar_idespecie(new especie($raza ? $raza->getIdespecie() : '', null));
                                     
                                 ?>
                                 <tr class="articulo">
                                     <td><?=$id?></td>
                                     <td><?=$nom?></td>
                                     <td><?=$nomcli." ".$apecli?></td>
-                                    <td><?=$raza->getNom_raza()?></td>
-                                    <td><?=$especie->getNom_especie()?></td>
+                                    <td><?=$raza ? $raza->getNom_raza() : ''?></td>
+                                    <td><?=$especie ? $especie->getNom_especie() : ''?></td>
                                     <td><div style="display:flex; flex-direction: row; justify-content: space-around">
                                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsmascota<?=$id?>">
                                             Detalles</button>

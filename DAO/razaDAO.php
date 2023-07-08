@@ -41,7 +41,6 @@ class razaDAO {
         }
 
         $idraza = $raza->getIdraza();
-        echo 'razita:'. $idraza;
         mysqli_stmt_bind_param($stmt,"i",$idraza);
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);
