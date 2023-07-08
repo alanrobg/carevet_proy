@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__.'/../constants/environment.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +14,7 @@
 class mascotaDAO {
     //put your code here
     function seleccionar_idmascota(mascota $mascota){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql = "select * from mascota where idmascota= ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -34,7 +34,7 @@ class mascotaDAO {
     }
     
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql = "select * from mascota";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -52,7 +52,7 @@ class mascotaDAO {
     }
     
     function crear(mascota $mascota){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="INSERT INTO mascota (nom_mascota, idcliente, nacimiento_mascota, color_mascota, registro_mascota, foto_mascota"
                 . ",esterilizado, idraza) VALUES (?,?,?,?,NOW(),?,?,?)";
         $stmt = mysqli_stmt_init($cn);
@@ -72,7 +72,7 @@ class mascotaDAO {
     }
     
     function actualizar(mascota $mascota){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" UPDATE mascota SET nom_mascota=?,idcliente=?,nacimiento_mascota=?,color_mascota=?,foto_mascota=?,esterilizado=? ,idraza = ? WHERE idmascota = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -92,7 +92,7 @@ class mascotaDAO {
     }
     
     function eliminar(mascota $mascota){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" delete from mascota WHERE idmascota=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

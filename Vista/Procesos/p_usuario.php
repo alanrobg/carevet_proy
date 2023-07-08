@@ -22,8 +22,8 @@ $usuario = new usuario(null, null, null, null, null, null, null, null, null, nul
 
 $usu = $usuarioDAO->seleccionar_usuario_usu_password_usu($usuario);
 if($usu==false){
-    echo "<script>window.location.href='../login.php?error=noencontrado';</script>";
-    exit();
+    // echo "<script>window.location.href='../login.php?error=noencontrado';</script>";
+    // exit();
     //echo "usuario no encontrado";
 }else{
     $sesion = new sesion(null, null, $usu->getIdusuario());

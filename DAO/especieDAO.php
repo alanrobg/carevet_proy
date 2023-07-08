@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__.'/../constants/environment.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,7 +15,7 @@ class especieDAO {
     //put your code here
     
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="select * from especie";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -32,7 +32,7 @@ class especieDAO {
     }
     
     function seleccionar_idespecie(especie $especie){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" select * from especie where idespecie=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -51,7 +51,7 @@ class especieDAO {
     }
     
     function crear(especie $especie){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="INSERT INTO especie (nom_especie) VALUES (?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -64,7 +64,7 @@ class especieDAO {
     }
     
     function actualizar(especie $especie){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="UPDATE especie SET nom_especie=? WHERE idespecie=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -78,7 +78,7 @@ class especieDAO {
     }
     /*
     function crear(especie $especie){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         if (!$cn) {
             echo "Error de conexión: " . mysqli_connect_error();
             return;
@@ -105,7 +105,7 @@ class especieDAO {
     }
     
     function actualizar(especie $especie){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         if (!$cn) {
             echo "Error de conexión: " . mysqli_connect_error();
             return;
@@ -134,7 +134,7 @@ class especieDAO {
     }
     */
     function eliminar(especie $especie){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" delete from especie WHERE idespecie=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

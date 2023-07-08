@@ -19,7 +19,10 @@ services:
         SERVICE_TAGS: dev
         SERVICE_NAME: mariadb
    carevet:
-      image: php:7.4-apache
+      #image: php:7.4-apache
+      build:
+         context: .
+         dockerfile: Dockerfile
       container_name: carevet
       ports:
         - "8200:80"

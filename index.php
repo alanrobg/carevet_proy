@@ -11,6 +11,10 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        require_once __DIR__ . '/vendor/autoload.php';
+
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
         echo "<script>window.location.href='./Vista/login.php';</script>"
         ?>
     </body>

@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__.'/../constants/environment.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,7 +16,7 @@ class razaDAO {
     
     
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="select * from raza";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -33,13 +33,15 @@ class razaDAO {
     }
     
     function seleccionar_idraza(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" select * from raza where idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
+
         $idraza = $raza->getIdraza();
+        echo 'razita:'. $idraza;
         mysqli_stmt_bind_param($stmt,"i",$idraza);
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);
@@ -52,7 +54,7 @@ class razaDAO {
     }
     
     function seleccionarxEspecie(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" select * from raza where idespecie=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -71,7 +73,7 @@ class razaDAO {
     }
     
     function crear(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="INSERT INTO raza (nom_raza, idespecie) VALUES (?,?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -85,7 +87,7 @@ class razaDAO {
     }
     
     function actualizar(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql ="UPDATE raza SET nom_raza = ?, idespecie = ? WHERE idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -101,7 +103,7 @@ class razaDAO {
     
     
     function eliminar(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
         $sql =" delete from raza WHERE idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
