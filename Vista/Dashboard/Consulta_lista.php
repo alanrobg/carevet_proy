@@ -11,13 +11,28 @@ Proyecto CareVet Veterinaria
 include_once './session.php';
 //---------------------------------------------------------------
 
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/consultaDAO.php';
+include_once '../../Modelo/consulta.php';
+
+$consultaDAO = new consultaDAO();
+//---------------------------------------------------------------
 
 //---------------------------------------------------------------
 //Recursos usuario
-include_once '../../DAO/especieDAO.php';
-include_once '../../Modelo/especie.php';
+include_once '../../DAO/mascotaDAO.php';
+include_once '../../Modelo/mascota.php';
 
-$especieDAO = new especieDAO();
+$mascotaDAO = new mascotaDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/clienteDAO.php';
+include_once '../../Modelo/cliente.php';
+
+$clienteDAO = new clienteDAO();
 //---------------------------------------------------------------
 
 ?>
@@ -48,6 +63,19 @@ document.addEventListener("keyup", e=>{
 </script>
 
 <!-------------------------------------------------SCRIPT PARA CLI_DUPLICADOS------------------------------------------------->
+<script>
+    <?php
+    if(isset($_REQUEST['error'])){
+        if($_REQUEST['error'] == "dup"){
+            ?>
+            window.onload = function() {
+            alert("El DNI ingresado se repite en otro Cliente");
+            }
+            <?php
+        }
+    }
+    ?>
+</script>
 
 <body id="cuerpo">
     
@@ -61,11 +89,9 @@ document.addEventListener("keyup", e=>{
         <div class="container py-4">
             <div class="row my-3">
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h1 class="display-6 fw-bold text-black izquierdo">Especies Registradas</h1>
+                    <h1 class="display-6 fw-bold text-black izquierdo">Consultas Registrados</h1>
                 </div>
             </div>
-            <?php include './Modal/Especie_new.php';?>
-            <?php include './Modal/Especie_update.php';?>
             <style>
                 .filtro{
                     display: none;
@@ -84,55 +110,45 @@ document.addEventListener("keyup", e=>{
                             </td>
                             <td>&emsp;</td>
                             <td>
-                                <button class="btn btn-primary" data-bs-target="#newespecie" data-bs-toggle="modal">Nueva Especie</button>
+                                <button class="btn btn-primary" data-bs-target="#newcliente" data-bs-toggle="modal">Nueva Consulta</button>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
 
-                    <table border="1" width="30%" class="ttable">
+                    <table border="1" width="100%" class="ttable">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
+                                <th>Cliente</th>
+                                <th>Fecha</th>
+                                <th>Trabajador</th>
+                                <th>Mascota</th>
+                                <th>Comentario</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <!--FOREACH-->
                         <?php
-                        foreach ($especieDAO->seleccionar() as $k=>$d){
+                        foreach ($consultaDAO->seleccionar() as $kc=>$dcon){
                             //DATOS DE SERVICIO
-                            $id = $d->getidespecie();
-                            $nom = $d->getnom_especie();
+                            $id = $dcon->getIdconsulta();
+                            $cliente = $clienteDAO->seleccionar_idcliente(new cliente($dcon->getIdcliente(), null, null, null, null, null, null, null, null, null));
+                            $nomcli = $cliente->getNombre_cli(); $apecli = $cliente->getApellido_cli();
+                            $nommascota = $mascotaDAO->seleccionar_idmascota(new mascota
+                                    ($dcon->getIdmascota(), null, null, null, null, null, null, null, null))->getNom_mascota();
+                            $trabajador = $usuarioDAO->seleccionar_idusuario(new usuario($dcon->getIdusu(), null, null, null, null, null, null, null, null, null, null, null));
+                            $nomtra = $trabajador->getNombre_usuario(); $apetra = $trabajador->getApellido_usuario();
+                            $fecha = date("H:s d/m/Y", strtotime($dcon->getFecha()));
+                            $com = $dcon->getComentario();
                         ?>
                         <tr class="articulo">
-                            <td><?=$id?></td>
-                            <td><?=$nom?></td>
-                            <td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailscli<?=$id?>">
-                                Detalles</button></td>
-                            <div class="modal fade" id="detailscli<?=$id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-title">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de la Especie</h1>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="col-sm-12 col-md-12 col-lg-12">
-                                            <div class="input-group mb-3">
-                                              <label style="flex-basis: 40%" class="input-group-text">Especie:</label>
-                                              <input style="flex-basis: 60%" type="text" class="form-control" name="" value="<?=$nom?>" readonly="">
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update<?=$id?>">Editar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <td><?=$nomcli." ".$apecli?></td>
+                            <td><?=$fecha?></td>
+                            <td><?=$nomtra." ".$apetra?></td>
+                            <td><?=$nommascota?></td>
+                            <td><textarea class="form-control" rows="2" cols="20" readonly=""><?=$com?></textarea></td>
+                            <td><a class="btn btn-primary" href="Consulta_detalle.php?data=<?=$encoded_data?>&idconsulta=<?=$id?>">Detalles</a></td>
                         </tr>           
 
                         <?php    
