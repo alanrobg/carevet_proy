@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2023 a las 23:56:48
+-- Tiempo de generación: 19-07-2023 a las 18:00:45
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -17,13 +17,51 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-DROP DATABASE IF EXISTS bd_veterinaria; 
-CREATE DATABASE bd_veterinaria;
-USE bd_veterinaria;
-
 --
 -- Base de datos: `bd_veterinaria`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `atencion`
+--
+
+CREATE TABLE `atencion` (
+  `idatencion` int(11) NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `comentario` varchar(100) NOT NULL,
+  `idusu` int(11) NOT NULL,
+  `idmascota` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `atencion`
+--
+
+INSERT INTO `atencion` (`idatencion`, `idcliente`, `fecha`, `comentario`, `idusu`, `idmascota`, `idusuario`) VALUES
+(1, 3, '2023-07-18 23:54:17', 'Com Prueba v2', 2, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `atencion_tipo`
+--
+
+CREATE TABLE `atencion_tipo` (
+  `idatencion_tipo` int(11) NOT NULL,
+  `nom_atencion_tipo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `atencion_tipo`
+--
+
+INSERT INTO `atencion_tipo` (`idatencion_tipo`, `nom_atencion_tipo`) VALUES
+(1, 'Consulta'),
+(2, 'Servicio');
 
 -- --------------------------------------------------------
 
@@ -57,6 +95,29 @@ INSERT INTO `cliente` (`idcliente`, `apellido_cli`, `nombre_cli`, `dni_cli`, `na
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `consulta`
+--
+
+CREATE TABLE `consulta` (
+  `idconsulta` int(11) NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `comentario` varchar(100) NOT NULL,
+  `idusu` int(11) NOT NULL,
+  `idmascota` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `consulta`
+--
+
+INSERT INTO `consulta` (`idconsulta`, `idcliente`, `fecha`, `comentario`, `idusu`, `idmascota`, `idusuario`) VALUES
+(1, 1, '2023-07-12 11:53:40', 'Com prueba', 2, 4, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `especie`
 --
 
@@ -70,12 +131,13 @@ CREATE TABLE `especie` (
 --
 
 INSERT INTO `especie` (`idespecie`, `nom_especie`) VALUES
-(1, 'Perro'),
+(1, 'Perro V2'),
 (2, 'Gato'),
 (3, 'Conejo'),
 (4, 'Hamster'),
 (5, 'Pez'),
-(6, 'Cuy');
+(6, 'Cuy'),
+(7, 'Ballena');
 
 -- --------------------------------------------------------
 
@@ -119,9 +181,10 @@ CREATE TABLE `mascota` (
 --
 
 INSERT INTO `mascota` (`idmascota`, `nom_mascota`, `idcliente`, `nacimiento_mascota`, `color_mascota`, `registro_mascota`, `foto_mascota`, `esterilizado`, `idraza`) VALUES
-(1, 'Alan', 1, '2000-07-18', 'Blancon1', '2023-07-06 09:43:48', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Alan-Marlen_Obono Arpal_12312322/10-48-12_06-07-2023.png', 1, 1),
-(2, 'Jonathan', 2, '2023-07-04', 'Blanco', '2023-07-06 10:50:54', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Jonathan-Robles GrilloB5_Alan RaulB2_123123123/05-50-54_06-07-2023.mp4', 2, 1),
-(3, 'Prueba B4', 4, '2023-01-03', 'Negro', '2023-07-06 15:36:25', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Prueba B4-JonathanV2_Reyna V2_12415115/11-16-22_06-07-2023.mp4', 2, 41);
+(1, 'Alan', 1, '2000-07-18', 'Blancon1', '2023-07-06 09:43:48', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Alan-Marlen_Obono Arpal_12312322/10-48-12_06-07-2023.png', 1, 9),
+(2, 'Jonathan', 2, '2023-07-04', 'Blanco', '2023-07-06 10:50:54', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Jonathan-Robles GrilloB5_Alan RaulB2_123123123/05-50-54_06-07-2023.mp4', 2, 13),
+(3, 'Manchas', 4, '2023-01-03', 'Negro', '2023-07-06 15:36:25', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Prueba B4-JonathanV2_Reyna V2_12415115/11-16-22_06-07-2023.mp4', 2, 3),
+(4, 'Negro', 2, '2023-07-03', 'Blanco', '2023-07-07 21:32:53', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Prueba v5-Robles GrilloB5_Alan RaulB2_123123123/04-32-53_08-07-2023.pdf', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -132,14 +195,14 @@ INSERT INTO `mascota` (`idmascota`, `nom_mascota`, `idcliente`, `nacimiento_masc
 CREATE TABLE `raza` (
   `idraza` int(11) NOT NULL,
   `nom_raza` varchar(50) NOT NULL,
-  `id_especie` int(11) NOT NULL
+  `idespecie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `raza`
 --
 
-INSERT INTO `raza` (`idraza`, `nom_raza`, `id_especie`) VALUES
+INSERT INTO `raza` (`idraza`, `nom_raza`, `idespecie`) VALUES
 (1, 'Pitbull', 1),
 (2, 'Persa', 2),
 (3, 'Pastor Aleman', 1),
@@ -151,7 +214,8 @@ INSERT INTO `raza` (`idraza`, `nom_raza`, `id_especie`) VALUES
 (9, 'Chihuahua', 1),
 (10, 'YorkShire', 1),
 (11, 'Pug', 1),
-(12, 'Schnauzer', 1);
+(12, 'Schnauzer', 1),
+(13, 'Alan v5', 3);
 
 -- --------------------------------------------------------
 
@@ -172,7 +236,15 @@ CREATE TABLE `sesion` (
 
 INSERT INTO `sesion` (`idsesion`, `key_ses`, `idusuario`, `fexpiracion_ses`) VALUES
 (28, '7029df142294110e7588e33bb403222eaf406c89497a0e327ea5e1023bda4a87', 1, '2023-07-06 11:17:29'),
-(29, 'ac051fee29306c0e0459a27b5ceb6d419dad46544700afd494b2c6d285fa979a', 1, '2023-07-06 13:55:33');
+(29, 'ac051fee29306c0e0459a27b5ceb6d419dad46544700afd494b2c6d285fa979a', 1, '2023-07-06 13:55:33'),
+(32, '36300a4df03cd7ee6abf933dd51fc52e59e1c3836404e336ca7a06f536081be3', 1, '2023-07-06 20:37:25'),
+(41, '1bcc36b5b958ba98b6b8bb01944a4aca43a4c54d0dbcc0c07b95719692a01af9', 1, '2023-07-07 10:02:55'),
+(42, '5ad7f13674e39e3d7cafde18c5609e1505e20f7d5c875dbe0bf4d1946b0318dc', 1, '2023-07-07 14:04:08'),
+(43, '1b63eceae8118f21c291c3a3c9ecf71e582a620a99a4ffc7fdd639c17652cdc6', 1, '2023-07-07 22:32:27'),
+(44, '2f099751fbf148f3c51e8ab6a5c8bd3adb975e8c1ceba6808b1c4c6e77ad02ff', 1, '2023-07-09 12:09:41'),
+(49, '39b03ec20c8dbe097b7d459609e916e5e3b01173dd9b91481edabe9fdc513683', 1, '2023-07-18 19:04:26'),
+(51, '9bbdc80502b4f6f03b325dcbf0d9a691de53d051b978045015bc803c0131fcc6', 1, '2023-07-19 11:32:05'),
+(52, 'b3a86ca136561c72a8be1e7316272393a8a477ea2a8dc9078cc5811929106087', 1, '2023-07-19 11:49:11');
 
 -- --------------------------------------------------------
 
@@ -221,17 +293,36 @@ CREATE TABLE `usuario_area` (
 INSERT INTO `usuario_area` (`idusuario_area`, `nom_area`) VALUES
 (1, 'Administrador'),
 (2, 'Veterinario'),
-(3, 'Recepcionista');
+(3, 'Recepcionista'),
+(4, 'Empleado');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `atencion`
+--
+ALTER TABLE `atencion`
+  ADD PRIMARY KEY (`idatencion`);
+
+--
+-- Indices de la tabla `atencion_tipo`
+--
+ALTER TABLE `atencion_tipo`
+  ADD PRIMARY KEY (`idatencion_tipo`);
+
+--
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`idcliente`);
+
+--
+-- Indices de la tabla `consulta`
+--
+ALTER TABLE `consulta`
+  ADD PRIMARY KEY (`idconsulta`);
 
 --
 -- Indices de la tabla `especie`
@@ -280,16 +371,34 @@ ALTER TABLE `usuario_area`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `atencion`
+--
+ALTER TABLE `atencion`
+  MODIFY `idatencion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `atencion_tipo`
+--
+ALTER TABLE `atencion_tipo`
+  MODIFY `idatencion_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `consulta`
+--
+ALTER TABLE `consulta`
+  MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `especie`
 --
 ALTER TABLE `especie`
-  MODIFY `idespecie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idespecie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `esterilizacion`
@@ -301,19 +410,19 @@ ALTER TABLE `esterilizacion`
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `idmascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idmascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `raza`
 --
 ALTER TABLE `raza`
-  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idraza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -325,7 +434,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario_area`
 --
 ALTER TABLE `usuario_area`
-  MODIFY `idusuario_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idusuario_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
