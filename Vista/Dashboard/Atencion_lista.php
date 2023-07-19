@@ -29,6 +29,22 @@ $mascotaDAO = new mascotaDAO();
 
 //---------------------------------------------------------------
 //Recursos usuario
+include_once '../../DAO/razaDAO.php';
+include_once '../../Modelo/raza.php';
+
+$razaDAO = new razaDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/especieDAO.php';
+include_once '../../Modelo/especie.php';
+
+$especieDAO = new especieDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
 include_once '../../DAO/clienteDAO.php';
 include_once '../../Modelo/cliente.php';
 
@@ -38,7 +54,7 @@ $clienteDAO = new clienteDAO();
 ?>
 <html lang="en" >
 <head>
-  <?php include './links.php';?>
+    <?php include './links.php';?>
     <title>CareVet Veterinaria</title>
 </head>
 <!-------------------------------------------------SCRIPT PARA BUSQUEDA------------------------------------------------->
@@ -83,7 +99,7 @@ document.addEventListener("keyup", e=>{
     <?php include './Header.php';?>
     <!--HEADER -->
     
-<?php include './Modal/Atencion/new.php';?>
+<?php include './Modal/Atencion_new.php';?>
 <main class="main-content">
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
         <div class="container py-4">
@@ -130,7 +146,7 @@ document.addEventListener("keyup", e=>{
                         </thead>
                         <!--FOREACH-->
                         <?php
-                        foreach ($atencionDAO->seleccionar() as $ka=>$dat){
+                        foreach ($atencionDAO->seleccionarDesc() as $ka=>$dat){
                             //DATOS DE SERVICIO
                             $id = $dat->getIdatencion();
                             $cliente = $clienteDAO->seleccionar_idcliente(new cliente($dat->getIdcliente(), null, null, null, null, null, null, null, null, null));
@@ -148,7 +164,7 @@ document.addEventListener("keyup", e=>{
                             <td><?=$nomtra." ".$apetra?></td>
                             <td><?=$nommascota?></td>
                             <td><textarea class="form-control" rows="2" cols="20" readonly=""><?=$com?></textarea></td>
-                            <td><a class="btn btn-primary" href="#">Detalles</a></td>
+                            <td><a class="btn btn-primary" href="./Atencion_detalle.php?data=<?=$encoded_data?>&idatencion=<?=$id?>">Detalles</a></td>
                         </tr>           
 
                         <?php    

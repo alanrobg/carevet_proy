@@ -158,6 +158,14 @@ $idusuario = $consulta->getIdusuario();
 
                         <!--FOREACH-->
                         <?php
+                            $mascota = $mascotaDAO->seleccionar_idmascota(new mascota($idmascota, null, null, null, null, null, null, null, null));
+                            $nom_mascota = $mascota->getNom_mascota();
+                            $actual = date("Y-m-d");
+                            $anios = date_diff(date_create($mascota->getNacimiento_mascota()), date_create($actual))->y;
+                            $meses = date_diff(date_create($mascota->getNacimiento_mascota()), date_create($actual))->m;
+                            $esteri = $esterilizacionDAO->seleccionar_idesterilizacion(new esterilizacion($mascota->getIdesterilizacion(), null))->getNom_esterilizacion();
+                            $raza = $razaDAO->seleccionar_idraza(new raza($mascota->getIdraza(), null, null));
+                            $especie = $especieDAO->seleccionar_idespecie(new especie($raza->getIdespecie(), null));
                             foreach ($mascotaDAO->seleccionarxCliente($idcliente) as $kmas=>$dmas){
                                 $idmascota = $dmas->getIdmascota();
                                 $nom_mascota = $dmas->getNom_mascota();
@@ -174,11 +182,11 @@ $idusuario = $consulta->getIdusuario();
                                 <td><?=$raza->getNom_raza()?></td>
                                 <td><?=$especie->getNom_especie()?></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#details<?=$idmascota?>">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailsmascota<?=$idmascota?>">
                                         Detalles
                                     </button>
                                 </td>
-                                <div class="modal fade" id="detailsmascota<?=$dm->getIdmascota()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="detailsmascota<?=$idmascota?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-title">
                                             <div class="modal-content">
                                             <div class="modal-header">
@@ -189,27 +197,27 @@ $idusuario = $consulta->getIdusuario();
                                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Nombre:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$dm->getNom_mascota()?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$mascota->getNom_mascota()?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Cliente:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$dm->getIdcliente()?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$mascota->getIdcliente()?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Nacimiento:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=date("d/m/Y", strtotime($dm->getNacimiento_mascota())) ?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=date("d/m/Y", strtotime($mascota->getNacimiento_mascota())) ?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Color:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$dm->getColor_mascota()?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$mascota->getColor_mascota()?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Fecha de registro:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=date("H:m d/m/Y", strtotime($dm->getRegistro_mascota()))?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=date("H:m d/m/Y", strtotime($mascota->getRegistro_mascota()))?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Foto:</label>
-                                                      <a class="btn btn-primary" target="_blanck" href="../<?=substr($dm->getFoto_mascota(),33)?>">Abrir</a>
+                                                      <a class="btn btn-primary" target="_blanck" href="../<?=substr($mascota->getFoto_mascota(),33)?>">Abrir</a>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Esterilizado:</label>
@@ -217,7 +225,7 @@ $idusuario = $consulta->getIdusuario();
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Raza:</label>
-                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$dm->getIdraza()?>" readonly="">
+                                                      <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$mascota->getIdraza()?>" readonly="">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                       <label style="flex-basis: 40%" class="input-group-text">Especie:</label>
@@ -225,7 +233,7 @@ $idusuario = $consulta->getIdusuario();
                                                     </div>
                                                     <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update<?=$dm->getIdmascota()?>">Editar</button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update<?=$idmascota?>">Editar</button>
                                                     </div>
                                                 </div>
                                             </div>

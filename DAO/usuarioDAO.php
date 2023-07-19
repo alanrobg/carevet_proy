@@ -48,7 +48,43 @@ class usuarioDAO {
     
     function seleccionar(){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql = "select * from usuario";
+        $sql = "select * from usuario order by idusuario desc";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        $vec = [];
+        while($row = mysqli_fetch_assoc($resultData)){
+            $usuario = new usuario($row['idusuario'],$row['ape_usuario'], $row['nom_usuario'], $row['dni_usuario'], $row['direccion_usuario'], $row['nacimiento_usuario'],
+                    $row['telefono_usuario'], $row['correo_usuario'], $row['contrato_usuario'], $row['idarea'], $row['usu_usuario'], $row['pass_usuario']);
+            $vec[]= $usuario;
+        }
+        return $vec;
+    }
+    
+    function seleccionarxVeterinario(){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql = "select * from usuario where idarea = 2";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        $vec = [];
+        while($row = mysqli_fetch_assoc($resultData)){
+            $usuario = new usuario($row['idusuario'],$row['ape_usuario'], $row['nom_usuario'], $row['dni_usuario'], $row['direccion_usuario'], $row['nacimiento_usuario'],
+                    $row['telefono_usuario'], $row['correo_usuario'], $row['contrato_usuario'], $row['idarea'], $row['usu_usuario'], $row['pass_usuario']);
+            $vec[]= $usuario;
+        }
+        return $vec;
+    }
+    
+    function seleccionarxEmpleado(){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql = "select * from usuario where idarea = 4";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";

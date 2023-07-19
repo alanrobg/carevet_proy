@@ -24,7 +24,24 @@ class atencionDAO {
         return $vec;
     }
     
-    function seleccionar_idconsulta(atencion $atencion){
+    function seleccionarDesc(){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql ="select * from atencion order by idatencion DESC";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        $vec = [];
+        while($row = mysqli_fetch_assoc($resultData)){
+            $atencion= new atencion($row['idatencion'], $row['idcliente'],$row['fecha'],$row['comentario'],$row['idusu'],$row['idmascota'],$row['idusuario']);
+            $vec[]= $atencion;
+        }
+        return $vec;
+    }
+    
+    function seleccionar_idatencion(atencion $atencion){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
         $sql = "select * from atencion where idatencion = ?";
         $stmt = mysqli_stmt_init($cn);
@@ -45,7 +62,7 @@ class atencionDAO {
     
     function crear(atencion $atencion){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql ="INSERT INTO atencion (idcliente, fecha, comentario, idusu,idmascota, idusuario VALUES (?,NOW(),?,?,?,?)";
+        $sql ="INSERT INTO atencion (idcliente, fecha, comentario, idusu,idmascota, idusuario) VALUES (?,NOW(),?,?,?,?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
@@ -55,26 +72,24 @@ class atencionDAO {
         $idusu = $atencion->getIdusu();
         $idmascota = $atencion->getIdmascota();
         $idusuario = $atencion->getIdusuario();
-        mysqli_stmt_bind_param($stmt, "ssii",$idcliente, $com, $idusu,$idmascota, $idusuario);
+        mysqli_stmt_bind_param($stmt, "isiii",$idcliente, $com, $idusu,$idmascota, $idusuario);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
     
     function actualizar(atencion $atencion){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql =" UPDATE atencion SET idcliente=?,fecha=?,comentario=?,idusu=?,idmascota = ?, idusuario=? WHERE idatencion = ?";
+        $sql =" UPDATE atencion SET idcliente=?,comentario=?,idusu=?,idmascota = ? WHERE idatencion = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
         $id = $atencion->getIdatencion();
         $idcliente = $atencion->getIdcliente();
-        $fecha = $atencion->getFecha();
         $com = $atencion->getComentario();
         $idusu = $atencion->getIdusu();
         $idmascota = $atencion->getIdmascota();
-        $idusuario = $atencion->getIdusuario();
-        mysqli_stmt_bind_param($stmt, "ssiii", $idcliente, $fecha, $com, $idusu, $idmascota, $idusuario, $id);
+        mysqli_stmt_bind_param($stmt, "isiii", $idcliente, $com, $idusu, $idmascota, $id);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }

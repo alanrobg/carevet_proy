@@ -29,6 +29,22 @@ $mascotaDAO = new mascotaDAO();
 
 //---------------------------------------------------------------
 //Recursos usuario
+include_once '../../DAO/razaDAO.php';
+include_once '../../Modelo/raza.php';
+
+$razaDAO = new razaDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/especieDAO.php';
+include_once '../../Modelo/especie.php';
+
+$especieDAO = new especieDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
 include_once '../../DAO/clienteDAO.php';
 include_once '../../Modelo/cliente.php';
 
@@ -83,7 +99,7 @@ document.addEventListener("keyup", e=>{
     <?php include './Header.php';?>
     <!--HEADER -->
     
-    
+<?php include './Modal/Consulta_new.php';?>
 <main class="main-content">
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
         <div class="container py-4">
@@ -110,7 +126,7 @@ document.addEventListener("keyup", e=>{
                             </td>
                             <td>&emsp;</td>
                             <td>
-                                <button class="btn btn-primary" data-bs-target="#newcliente" data-bs-toggle="modal">Nueva Consulta</button>
+                                <button class="btn btn-primary" data-bs-target="#newconsulta" data-bs-toggle="modal">Nueva Consulta</button>
                             </td>
                         </tr>
                     </table>
@@ -130,7 +146,7 @@ document.addEventListener("keyup", e=>{
                         </thead>
                         <!--FOREACH-->
                         <?php
-                        foreach ($consultaDAO->seleccionar() as $kc=>$dcon){
+                        foreach ($consultaDAO->seleccionarDesc() as $kc=>$dcon){
                             //DATOS DE SERVICIO
                             $id = $dcon->getIdconsulta();
                             $cliente = $clienteDAO->seleccionar_idcliente(new cliente($dcon->getIdcliente(), null, null, null, null, null, null, null, null, null));
@@ -148,7 +164,7 @@ document.addEventListener("keyup", e=>{
                             <td><?=$nomtra." ".$apetra?></td>
                             <td><?=$nommascota?></td>
                             <td><textarea class="form-control" rows="2" cols="20" readonly=""><?=$com?></textarea></td>
-                            <td><a class="btn btn-primary" href="Consulta_detalle.php?data=<?=$encoded_data?>&idconsulta=<?=$id?>">Detalles</a></td>
+                            <td><a class="btn btn-primary" href="./Consulta_detalle.php?data=<?=$encoded_data?>&idconsulta=<?=$id?>">Detalles</a></td>
                         </tr>           
 
                         <?php    

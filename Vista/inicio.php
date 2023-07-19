@@ -94,7 +94,7 @@ if(isset($_GET['data'])){
                 <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
-                <li><a class="dropdown-item" href="../Procesos/p_session.php?data=<?=$encoded_data?>&accion=delete"><b style="color: red">Salir</b></a></li>
+                <li><a class="dropdown-item" href="./Procesos/p_session.php?data=<?=$encoded_data?>&accion=delete"><b style="color: red">Salir</b></a></li>
             </ul>
         </div>   
         <div class="container">
@@ -121,7 +121,7 @@ if(isset($_GET['data'])){
                         <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
-                        <li><a class="dropdown-item" href="../Procesos/p_session.php?data=<?=$encoded_data?>&accion=delete"><b style="color: red">Salir</b></a></li>
+                        <li><a class="dropdown-item" href="./Procesos/p_session.php?data=<?=$encoded_data?>&accion=delete"><b style="color: red">Salir</b></a></li>
                     </ul>
                 </div>
             </div>
