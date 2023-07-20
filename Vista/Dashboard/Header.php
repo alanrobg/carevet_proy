@@ -20,6 +20,7 @@
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Servicios_lista.php?data=<?=$encoded_data?>">Servicios</a></li>
+                <li><a class="dropdown-item" href="./Tratamiento_lista.php?data=<?=$encoded_data?>">Tratamientos</a></li>
                 <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
                 <li><a class="dropdown-item" href="./Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                 <li><a class="dropdown-item" href="./Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
@@ -49,6 +50,7 @@
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Servicios_lista.php?data=<?=$encoded_data?>">Servicios</a></li>
+                <li><a class="dropdown-item" href="./Tratamiento_lista.php?data=<?=$encoded_data?>">Tratamientos</a></li>
                 <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
                 <li><a class="dropdown-item" href="./Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                 <li><a class="dropdown-item" href="./Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>

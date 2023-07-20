@@ -80,19 +80,43 @@ class tratamientoDAO {
     
     function actualizar(tratamiento $tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql ="UPDATE tratamiento SET nom_tratamiento = ?, estado = ? WHERE idtratamiento=?";
+        $sql ="UPDATE tratamiento SET nom_tratamiento = ? WHERE idtratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
         $id = $tratamiento->getIdtratamiento();
         $nom_trat = $tratamiento->getNom_tratamiento();
-        $estado = $tratamiento->getEstado();
-        mysqli_stmt_bind_param($stmt, "sii",$nom_trat, $estado, $id);
+        mysqli_stmt_bind_param($stmt, "si",$nom_trat, $id);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
     
+    function actualizarUp(tratamiento $tratamiento){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql ="UPDATE tratamiento SET  estado = 1 WHERE idtratamiento=?";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        $id = $tratamiento->getIdtratamiento();
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+    
+    function actualizarDown(tratamiento $tratamiento){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql ="UPDATE tratamiento SET estado = 0 WHERE idtratamiento=?";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        $id = $tratamiento->getIdtratamiento();
+        mysqli_stmt_bind_param($stmt, "i", $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
     
     function eliminar(tratamiento $tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
