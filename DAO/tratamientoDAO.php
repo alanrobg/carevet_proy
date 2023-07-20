@@ -29,6 +29,23 @@ class tratamientoDAO {
         return $vec;
     }
     
+    function seleccionarxDisponibles(){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql ="select * from tratamiento where estado = 1";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        $vec = [];
+        while($row = mysqli_fetch_assoc($resultData)){
+            $tratamiento= new tratamiento($row['idtratamiento'], $row['nom_tratamiento'], $row['estado']);
+            $vec[]= $tratamiento;
+        }
+        return $vec;
+    }
+    
     function seleccionar_idtratamiento(tratamiento $tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
         $sql =" select * from tratamiento where idtratamiento=?";
@@ -36,7 +53,7 @@ class tratamientoDAO {
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
-        $id = $servicio->getIdservicio();
+        $id = $tratamiento->getIdtratamiento();
         mysqli_stmt_bind_param($stmt,"i",$id);
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);

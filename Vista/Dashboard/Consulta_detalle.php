@@ -59,6 +59,23 @@ include_once '../../Modelo/especie.php';
 $especieDAO = new especieDAO();
 //---------------------------------------------------------------
 
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/tratamientoDAO.php';
+include_once '../../Modelo/tratamiento.php';
+
+$tratamientoDAO = new tratamientoDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/consulta_tratamientoDAO.php';
+include_once '../../Modelo/consulta_tratamiento.php';
+
+$consulta_tratamientoDAO = new consulta_tratamientoDAO();
+//---------------------------------------------------------------
+
+
 $idconsulta = $_REQUEST['idconsulta'];
 
 $consulta = $consultaDAO->seleccionar_idconsulta(new consulta($idconsulta, null, null, null, null, null, null));
@@ -99,6 +116,8 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
     <!--HEADER -->
     
 <?php include './Modal/Consulta_update.php';?>
+<?php include './Modal/Consulta_tratamiento_new.php';?>
+<?php include './Modal/Consulta_tratamiento_update.php';?>
 <main class="main-content">
     
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
@@ -158,6 +177,7 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                             <td><h2>Mascota</h2></td>
                             <td>&emsp;</td>
                             <td><button data-bs-toggle="modal" data-bs-target="#detailsvacuna" class="btn btn-primary">Vacunas</button></td>
+                            
                         </tr>
                     </table>
                 </div>
@@ -255,13 +275,55 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                     </table>
                 </div>
             </div>
-        </div>
-                
+            
+            <div class="row my-3">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <table>
+                        <tr>
+                            <td><h2>Tratamientos</h2></td>
+                            <td>&emsp;</td>
+                            <td><button data-bs-toggle="modal" data-bs-target="#newtratamiento" class="btn btn-primary">Tratamiento</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <table border='' class="ttable" width="90%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ID_CONSULTA</th>
+                                <th>Tratamiento</th>
+                                <th>Fecha</th>
+                                <th>Comentario</th>
+                                <th></th><th></th>
+                            </tr>
+                        </thead>
 
-                
-                
-                
-    
+                        <!--FOREACH-->
+                        <?php
+                        foreach ($consulta_tratamientoDAO->seleccionarxConsulta($idconsulta) as $kcontrat=>$dcontrat){
+                            //DATOS DE SERVICIO
+                            $idconsulta_tratamiento = $dcontrat->getIdconsulta_tratamiento();
+                            $tratamiento = $tratamientoDAO->seleccionar_idtratamiento(new tratamiento($dcontrat->getIdtratamiento(), null, null));
+                            $com = $dcontrat->getComentario();
+                        ?>
+                        <tr>
+                            <td><?=$idconsulta_tratamiento?></td>
+                            <td><?=$dcontrat->getIdconsulta()?></td>
+                            <td><?=$tratamiento->getNom_tratamiento()?></td>
+                            <td><?=date("H:m d/m/Y", strtotime($dcontrat->getFecha()))?></td>
+                            <td><textarea class="form-control" rows="3" cols="25" readonly=""><?=$com?></textarea></td>
+                            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updtate_tratamiento<?=$idconsulta_tratamiento?>">Editar</button></td>
+                            <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                        </tr>
+                        <?php    
+                        }
+                        ?>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
         </div>
 </div>
 </main>

@@ -288,16 +288,15 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
 
                         <!--FOREACH-->
                         <?php
-                        foreach ($atencion_servicioDAO->seleccionar() as $kas=>$das){
+                        foreach ($atencion_servicioDAO->seleccionarxAtencion($idatencion) as $kas=>$das){
                             //DATOS DE SERVICIO
                             $idatencion_servicio = $das->getIdatencion_servicion();
-                            $idatencion = $das->getIdatencion();
                             $servicio = $servicioDAO->seleccionar_idservicio(new servicio($das->getIdservicio(), null, null));
                             $com = $das->getComentario();
                         ?>
                         <tr>
                             <td><?=$idatencion_servicio?></td>
-                            <td><?=$idatencion?></td>
+                            <td><?=$das->getIdatencion()?></td>
                             <td><?=$servicio->getNom_servicio()?></td>
                             <td><?=date("H:m d/m/Y", strtotime($das->getFecha()))?></td>
                             <td><textarea class="form-control" rows="3" cols="25" readonly=""><?=$com?></textarea></td>

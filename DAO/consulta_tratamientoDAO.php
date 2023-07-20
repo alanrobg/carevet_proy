@@ -6,15 +6,15 @@
  */
 
 /**
- * Description of atencion_servicioDAO
+ * Description of consulta_tratamientoDAO
  *
  * @author monso
  */
-class atencion_servicioDAO {
+class consulta_tratamientoDAO {
     //put your code here
     function seleccionar(){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql ="select * from atencion_servicio";
+        $sql ="select * from consulta_tratamiento";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
@@ -23,89 +23,89 @@ class atencion_servicioDAO {
         $resultData = mysqli_stmt_get_result($stmt);
         $vec = [];
         while($row = mysqli_fetch_assoc($resultData)){
-            $atencion_servicio= new atencion_servicio($row['idatencion_servicio'], $row['idatencion'], $row['idservicio'], $row['fecha'], $row['comentario']);
-            $vec[]= $atencion_servicio;
+            $consulta_tratamiento= new consulta_tratamiento($row['idconsulta_tratamiento'], $row['idconsulta'], $row['idtratamiento'], $row['fecha'], $row['comentario']);
+            $vec[]= $consulta_tratamiento;
         }
         return $vec;
     }
     
-    function seleccionar_idtatencion_servicio(atencion_servicio $atencion_servicio){
+    function seleccionar_idconsulta_tratamiento(consulta_tratamiento $consulta_tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql =" select * from atencion_servicio where idatencion_servicio=?";
+        $sql =" select * from consulta_tratamiento where idconsulta_tratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
-        $id = $atencion_servicio->getIdatencion_servicion();
+        $id = $consulta_tratamiento->getIdconsulta_tratamiento();
         mysqli_stmt_bind_param($stmt,"i",$id);
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);
         if($row = mysqli_fetch_assoc($resultData)){
-            $atencion_servicio= new atencion_servicio($row['idatencion_servicio'], $row['idatencion'], $row['idservicio'], $row['fecha'], $row['comentario']);
-            return $atencion_servicio;
+            $consulta_tratamiento= new consulta_tratamiento($row['idconsulta_tratamiento'], $row['idconsulta'], $row['idtratamiento'], $row['fecha'], $row['comentario']);
+            return $consulta_tratamiento;
         }else{
             return false;
         }
     }
     
-    function seleccionarxAtencion($idatencion){
+    function seleccionarxConsulta($idconsulta){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql ="select * from atencion_servicio where idatencion=?";
+        $sql =" select * from consulta_tratamiento where idconsulta=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
-        mysqli_stmt_bind_param($stmt,"i",$idatencion);
+        mysqli_stmt_bind_param($stmt,"i",$idconsulta);
         mysqli_stmt_execute($stmt);
         $resultData = mysqli_stmt_get_result($stmt);
         $vec = [];
         while($row = mysqli_fetch_assoc($resultData)){
-            $atencion_servicio= new atencion_servicio($row['idatencion_servicio'], $row['idatencion'], $row['idservicio'], $row['fecha'], $row['comentario']);
-            $vec[]= $atencion_servicio;
+            $consulta_tratamiento= new consulta_tratamiento($row['idconsulta_tratamiento'], $row['idconsulta'], $row['idtratamiento'], $row['fecha'], $row['comentario']);
+            $vec[]= $consulta_tratamiento;
         }
         return $vec;
     }
     
-    function crear(atencion_servicio $atencion_servicio){
+    function crear(consulta_tratamiento $consulta_tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306"); 
-        $sql ="INSERT INTO atencion_servicio (idatencion, idservicio,fecha,comentario) VALUES (?,?,NOW(),?)";
+        $sql ="INSERT INTO consulta_tratamiento (idconsulta, idtratamiento,fecha,comentario) VALUES (?,?,NOW(),?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
-        $ida = $atencion_servicio->getIdatencion();
-        $ids = $atencion_servicio->getIdservicio();
-        $com = $atencion_servicio->getComentario();
-        mysqli_stmt_bind_param($stmt, "iis", $ida, $ids, $com);
+        $idconsulta = $consulta_tratamiento->getIdconsulta();
+        $idtratamiento = $consulta_tratamiento->getIdtratamiento();
+        $com = $consulta_tratamiento->getComentario();
+        mysqli_stmt_bind_param($stmt, "iis", $idconsulta, $idtratamiento, $com);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
     
-    function actualizar(atencion_servicio $atencion_servicio){
+    function actualizar(consulta_tratamiento $consulta_tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql ="UPDATE atencion_servicio SET idatencion = ?, idservicio = ?, comentario = ? WHERE idatencion_servicio=?";
+        $sql ="UPDATE consulta_tratamiento SET idconsulta = ?, idtratamiento = ?, comentario = ? WHERE idconsulta_tratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
-        $id = $atencion_servicio->getIdatencion_servicion();
-        $ida = $atencion_servicio->getIdatencion();
-        $ids = $atencion_servicio->getIdservicio();
-        $com = $atencion_servicio->getComentario();
-        mysqli_stmt_bind_param($stmt, "iisi",$ida, $ids, $com, $id);
+        $id = $consulta_tratamiento->getIdconsulta_tratamiento();
+        $idconsulta = $consulta_tratamiento->getIdconsulta();
+        $idtratamiento = $consulta_tratamiento->getIdtratamiento();
+        $com = $consulta_tratamiento->getComentario();
+        mysqli_stmt_bind_param($stmt, "iisi",$idconsulta, $idtratamiento, $com, $id);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
     
     
-    function eliminar(atencion_servicio $atencion_servicio){
+    function eliminar(consulta_tratamiento $consulta_tratamiento){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql =" delete from atencion_servicio WHERE idatencion_servicio = ?";
+        $sql =" delete from consulta_tratamiento WHERE idconsulta_tratamiento = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";
         }
-        $id = $atencion_servicio->getIdatencion_servicion();
+        $id = $consulta_tratamiento->getIdconsulta_tratamiento();
         mysqli_stmt_bind_param($stmt,"i",$id);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
