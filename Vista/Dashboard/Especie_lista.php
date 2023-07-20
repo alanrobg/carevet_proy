@@ -64,8 +64,8 @@ document.addEventListener("keyup", e=>{
                     <h1 class="display-6 fw-bold text-black izquierdo">Especies Registradas</h1>
                 </div>
             </div>
-            <?php include './Modal/especie_new.php';?>
-            <?php include './Modal/especie_update.php';?>
+            <?php include './Modal/Especie_new.php';?>
+            <?php include './Modal/Especie_update.php';?>
             <style>
                 .filtro{
                     display: none;

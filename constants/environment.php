@@ -1,5 +1,5 @@
 <?php
-const DB_HOST = '192.168.0.14';
+const DB_HOST = '157.230.237.65';
 const DB_PORT = '3308';
 const DB_NAME = 'bd_veterinaria';
 const DB_USER = 'root';

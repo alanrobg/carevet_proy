@@ -38,7 +38,25 @@ $usuarioDAO_area = new usuario_areaDAO();
     }
     ?>
 </script>
+<script>
+document.addEventListener("keyup", e=>{
 
+  if (e.target.matches("#buscador")){
+
+      if (e.key ==="Escape")e.target.value = ""
+
+      document.querySelectorAll(".articulo").forEach(fruta =>{
+
+          fruta.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+            ?fruta.classList.remove("filtro")
+            :fruta.classList.add("filtro")
+      })
+
+  }
+
+
+})
+</script>
 <body id="cuerpo">
     
     <!--HEADER -->
@@ -65,9 +83,23 @@ $usuarioDAO_area = new usuario_areaDAO();
             </style>
                 <div class="row my-3">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div style="display: flex; justify-content: flex-end">
-                            <button data-bs-toggle="modal" data-bs-target="#newUsuario" class="btn btn-primary">Crear Usuario</button>
-                        </div>
+                        <table>
+                            <tr>
+                                <td align="right" style="padding-right: 5px">
+                                    Busqueda:
+                                </td>
+                                <td>
+                                    <input class="form-control" type="text" name="buscador" id="buscador" placeholder="Buscar...">
+                                </td>
+                                <td>&emsp;</td>
+                                <td>
+                                    <button class="btn btn-primary" data-bs-target="#newUsuario" data-bs-toggle="modal">Crear Usuario</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-12 col-lg-12">
                         <table border="1" width="100%" class="ttable">
                             <thead>
                                 <tr>

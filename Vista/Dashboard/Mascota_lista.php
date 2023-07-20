@@ -112,7 +112,6 @@ $especieDAO = new especieDAO();
                                     <th>Raza</th>
                                     <th>Especie</th>
                                     <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <!--FOREACH-->
@@ -137,8 +136,8 @@ $especieDAO = new especieDAO();
                                     <td><?=$especie ? $especie->getNom_especie() : ''?></td>
                                     <td><div style="display:flex; flex-direction: row; justify-content: space-around">
                                         <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsmascota<?=$id?>">
-                                            Detalles</button>
-                                        <button class="btn btn-danger" type="button">Eliminar</button></div></td>
+                                            Detalles</button></div>
+                                    </td>
                                     <div class="modal fade" id="detailsmascota<?=$dm->getIdmascota()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-title">
                                             <div class="modal-content">

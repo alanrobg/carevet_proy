@@ -14,7 +14,7 @@ include_once __DIR__.'/../constants/environment.php';
 class esterilizacionDAO {
     //put your code here
     function seleccionar_idesterilizacion(esterilizacion $esterilizacion){
-        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
         $sql = "select * from esterilizacion where idesterilizacion= ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -33,7 +33,7 @@ class esterilizacionDAO {
     }
     
     function seleccionar(){
-        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
         $sql = "select * from esterilizacion";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
