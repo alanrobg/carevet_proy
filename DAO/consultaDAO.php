@@ -8,7 +8,7 @@
 class consultaDAO {
     //put your code here
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql ="select * from consulta";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -25,7 +25,7 @@ class consultaDAO {
     }
     
     function seleccionarDesc(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql ="select * from consulta order by idconsulta DESC";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -42,7 +42,7 @@ class consultaDAO {
     }
     
     function seleccionar_idconsulta(consulta $consulta){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql = "select * from consulta where idconsulta = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -61,7 +61,7 @@ class consultaDAO {
     }
     
     function crear(consulta $consulta){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql ="INSERT INTO consulta (idcliente, fecha, comentario, idusu, idmascota, idusuario) VALUES (?,NOW(),?,?,?,?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -78,7 +78,7 @@ class consultaDAO {
     }
     
     function actualizar(consulta $consulta){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql =" UPDATE consulta SET idcliente=?,comentario=?,idusu=?,idmascota = ? WHERE idconsulta = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -95,7 +95,7 @@ class consultaDAO {
     }
     
     function eliminar(consulta $consulta){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql =" delete from consulta WHERE idconsulta=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

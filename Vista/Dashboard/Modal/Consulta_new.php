@@ -31,7 +31,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">Cliente:<label style="color: red">*</label></label>
-                        <select style="flex-basis: 60%" class="form-select"  name="idcliente" required="" onchange="actualizarMascotas()">
+                        <select style="flex-basis: 60%" class="form-select"  name="idcliente"  id="idcliente" required="" onchange="actualizarClienteMascota()">
                               <option value="">Seleccione un Cliente</option>
                               <?php
                               foreach ($clienteDAO->seleccionar() as $kcli=>$dcli) {
@@ -85,3 +85,46 @@
     </div>
 </div>
 
+<script>
+function actualizarClienteMascota() {
+
+  const clienteSelect = document.getElementById('idcliente');
+  const mascotaSelect = document.getElementById('selectMascotas');
+  const clienteSeleccionado = clienteSelect.value;
+  console.log('consolano1', clienteSeleccionado)
+  // Limpiamos el select de subcategoría
+  mascotaSelect.innerHTML = '';
+
+  // Si no se ha seleccionado una categoría, no hay subcategorías
+  if (!clienteSeleccionado) {
+    return;
+  }
+
+  // Llamada AJAX para obtener las subcategorías dependientes del backend (PHP)
+  const xhr = new XMLHttpRequest();
+  const url = `../../api/mascotas/select-cliente-mascota.php?cliente_id=${clienteSeleccionado}`;
+  console.log('consolano')
+  xhr.open('GET', url);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log('responsete:', xhr.responseText)
+        const mascotas = JSON.parse(xhr.responseText);
+
+        // Agregamos las opciones de subcategoría al select
+        mascotas.forEach((mascota) => {
+          const option = document.createElement('option');
+          option.value = mascota.id;
+          option.text = mascota.name;
+          mascotaSelect.appendChild(option);
+        });
+      } else {
+        console.error('Error al obtener las subcategorías.');
+      }
+    }
+  };
+
+
+  xhr.send();
+}
+</script>

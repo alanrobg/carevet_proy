@@ -12,7 +12,7 @@ services:
         - ./database:/docker-entrypoint-initdb.d
         #- ./database/conf-search.cnf:/etc/mysql/conf.d/my.cnf
      environment:
-        MYSQL_DATABASE: "bd_veterinaria"
+        MYSQL_DATABASE: DB_NAME
         #MYSQL_USER: "root"
         MYSQL_PASSWORD: "demo"
         MYSQL_ROOT_PASSWORD: "123456"

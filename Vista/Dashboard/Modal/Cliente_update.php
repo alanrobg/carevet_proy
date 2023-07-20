@@ -33,7 +33,7 @@ foreach ($clienteDAO->seleccionar() as $kcli=>$dcli){
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">DNI:</label>
-                        <input style="flex-basis: 60%" type="text" class="form-control" name="dni_cli" value="<?=$dni?>">
+                        <input style="flex-basis: 60%" type="text" class="form-control" name="dni_cli" value="<?=$dni?>" onchange="minLengthDNI()" oninput="maxLengthDNI()">
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">Fecha de Nacimiento:</label>
@@ -45,11 +45,11 @@ foreach ($clienteDAO->seleccionar() as $kcli=>$dcli){
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">Telefono:</label>
-                        <input style="flex-basis: 60%" type="text" class="form-control" name="telefono_cli" value="<?=$tel?>">
+                        <input style="flex-basis: 60%" type="text" class="form-control" name="telefono_cli" value="<?=$tel?>" onchange="minLengthTelefono()" oninput="maxLengthTelefono()">
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">Email:</label>
-                        <input style="flex-basis: 60%" type="email" class="form-control" name="email_cli" value="<?=$correo?>">
+                        <input style="flex-basis: 60%" type="email" class="form-control" name="email_cli" value="<?=$correo?>" onchange="validateEmail()">
                     </div>
                     <div class="input-group mb-3">
                         <label style="flex-basis: 40%" class="input-group-text">Nom Usuario:</label>
@@ -57,7 +57,7 @@ foreach ($clienteDAO->seleccionar() as $kcli=>$dcli){
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-primary" onclick="validateEmail()">Editar</button>
                     </div>
                 </div>
             </form>
@@ -70,3 +70,74 @@ foreach ($clienteDAO->seleccionar() as $kcli=>$dcli){
 }
 ?>
 </div>
+
+<script>
+    function maxLengthDNI() {
+      const inputElement = document.getElementById('dni_cli');
+      const maxLength = parseInt(inputElement.getAttribute('maxlength'), 10);
+
+      const inputValue = inputElement.value;
+      const length = inputValue.length;
+      console.log('cos:', maxLength)
+
+      if (length > maxLength) {
+        alert(`La longitud máxima permitida es ${maxLength} caracteres.`);
+        inputElement.value = inputValue.substring(0, maxLength);
+      }
+    }
+
+    function minLengthDNI() {
+      const inputElement = document.getElementById('dni_cli');
+      const maxLength = parseInt(inputElement.getAttribute('maxlength'), 10);
+
+      const inputValue = inputElement.value;
+      const length = inputValue.length;
+      console.log('cos:', maxLength)
+
+      if (length < maxLength-2) {
+        alert(`La longitud mínima es ${maxLength-2}.`);
+        inputElement.value = inputValue.substring(0, maxLength);
+      }
+    }
+
+    function maxLengthTelefono() {
+      const inputElement = document.getElementById('telefono_cli');
+      const maxLength = parseInt(inputElement.getAttribute('maxlength'), 10);
+
+      const inputValue = inputElement.value;
+      const length = inputValue.length;
+      console.log('cos:', maxLength)
+
+      if (length > maxLength) {
+        alert(`La longitud máxima permitida es ${maxLength} caracteres.`);
+        inputElement.value = inputValue.substring(0, maxLength);
+      }
+    }
+
+    function minLengthTelefono() {
+      const inputElement = document.getElementById('telefono_cli');
+      const maxLength = parseInt(inputElement.getAttribute('maxlength'), 10);
+
+      const inputValue = inputElement.value;
+      const length = inputValue.length;
+      console.log('cos:', maxLength)
+
+      if (length < maxLength-2) {
+        alert(`La longitud mínima es ${maxLength-2}.`);
+        inputElement.value = inputValue.substring(0, maxLength);
+      }
+    }
+
+    function validateEmail() {
+      const emailInput = document.getElementById('email_cli');
+      const email = emailInput.value.trim(); // Eliminamos espacios en blanco al inicio y al final
+
+      // Expresión regular para verificar el formato de una dirección de correo electrónico
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(email)) {
+        alert('Por favor, ingresa una dirección de correo electrónico válida.');
+      } 
+    }
+
+  </script>

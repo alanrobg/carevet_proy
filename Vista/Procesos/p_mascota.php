@@ -95,8 +95,7 @@ if($accion=="update"){
         echo "<script>window.location.href='../Dashboard/Mascota_lista.php?data=$encoded_data';</script>";
 
         
-    }
-    
+    }   
 } 
 
 if($accion=="delete"){

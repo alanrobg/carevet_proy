@@ -16,7 +16,7 @@ class razaDAO {
     
     
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql ="select * from raza";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -33,7 +33,7 @@ class razaDAO {
     }
     
     function seleccionar_idraza(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql =" select * from raza where idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -53,7 +53,7 @@ class razaDAO {
     }
     
     function seleccionarxEspecie(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql =" select * from raza where idespecie=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -72,7 +72,7 @@ class razaDAO {
     }
     
     function crear(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306"); 
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306"); 
         $sql ="INSERT INTO raza (nom_raza, idespecie) VALUES (?,?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -86,7 +86,7 @@ class razaDAO {
     }
     
     function actualizar(raza $raza){
-        $cn = mysqli_connect(DB_HOST, "root", "123456", "bd_veterinaria", "3308");
+        $cn = mysqli_connect(DB_HOST, "root", "123456", DB_NAME, "3308");
         $sql ="UPDATE raza SET nom_raza = ?, idespecie = ? WHERE idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -102,7 +102,7 @@ class razaDAO {
     
     
     function eliminar(raza $raza){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $cn = mysqli_connect("localhost", "root", "", DB_NAME, "3306");
         $sql =" delete from raza WHERE idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
