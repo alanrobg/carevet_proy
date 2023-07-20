@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2023 a las 19:11:18
+-- Tiempo de generación: 21-07-2023 a las 01:08:35
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -144,6 +144,28 @@ INSERT INTO `consulta` (`idconsulta`, `idcliente`, `fecha`, `comentario`, `idusu
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `consulta_tratamiento`
+--
+
+CREATE TABLE `consulta_tratamiento` (
+  `idconsulta_tratamiento` int(11) NOT NULL,
+  `idconsulta` int(11) NOT NULL,
+  `idtratamiento` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `comentario` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `consulta_tratamiento`
+--
+
+INSERT INTO `consulta_tratamiento` (`idconsulta_tratamiento`, `idconsulta`, `idtratamiento`, `fecha`, `comentario`) VALUES
+(1, 2, 2, '2023-07-19 08:24:17', 'Rt 1v1'),
+(2, 3, 1, '2023-07-20 13:34:08', 'V1');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `especie`
 --
 
@@ -227,9 +249,9 @@ CREATE TABLE `mascota` (
 
 INSERT INTO `mascota` (`idmascota`, `nom_mascota`, `idcliente`, `nacimiento_mascota`, `color_mascota`, `registro_mascota`, `foto_mascota`, `esterilizado`, `idraza`) VALUES
 (1, 'Alan', 1, '2000-08-31', 'Blancon1', '2023-07-06 09:43:48', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Alan-Marlen_Obono Arpal_12312322/10-48-12_06-07-2023.png', 1, 9),
-(2, 'Jonathan', 2, '2023-07-04', 'Blanco', '2023-07-06 10:50:54', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Jonathan-Robles GrilloB5_Alan RaulB2_123123123/05-50-54_06-07-2023.mp4', 2, 13),
+(2, 'Jonathan', 2, '2022-07-04', 'Blanco', '2023-07-06 10:50:54', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Jonathan-Robles GrilloB5_Alan RaulB2_123123123/05-50-54_06-07-2023.mp4', 2, 13),
 (3, 'Manchas', 4, '1999-01-01', 'Negro', '2023-07-06 15:36:25', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Prueba B4-JonathanV2_Reyna V2_12415115/11-16-22_06-07-2023.mp4', 2, 1),
-(4, 'Negro', 2, '2023-07-03', 'Blanco', '2023-07-07 21:32:53', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Prueba v5-Robles GrilloB5_Alan RaulB2_123123123/04-32-53_08-07-2023.pdf', 1, 2);
+(4, 'Negro', 2, '2021-07-03', 'Blanco', '2023-07-07 21:32:53', '/xampp/htdocs/carevet_proy/Vista/Mascotas_Fotos/Prueba v5-Robles GrilloB5_Alan RaulB2_123123123/04-32-53_08-07-2023.pdf', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -322,7 +344,10 @@ INSERT INTO `sesion` (`idsesion`, `key_ses`, `idusuario`, `fexpiracion_ses`) VAL
 (59, '7852730f764aec123a0e7cb915c0f922fea67adf0548bde2fef287dff90c9228', 1, '2023-07-19 18:33:35'),
 (60, '4dfbfafb23d0fbc206a3be0c683bccccf1b8bff59ea4712ccadb4cff8afbc176', 1, '2023-07-19 19:34:08'),
 (61, 'bcfcecebb37e81f4322153b7de8d18f92611b1622cae42bbf5dacda9b1a03ec3', 1, '2023-07-20 00:06:48'),
-(64, 'dfcaf1e2b37a26d792f375ede6db1e940cc2be6a543091e14857e1ca4ed5e518', 1, '2023-07-20 12:42:20');
+(64, 'dfcaf1e2b37a26d792f375ede6db1e940cc2be6a543091e14857e1ca4ed5e518', 1, '2023-07-20 12:42:20'),
+(65, 'f7b0bfa787b103e1726c9901beefff2303b2b876f0058340d945a0e8326c0f07', 1, '2023-07-20 14:15:33'),
+(66, '9d632770e5e0af0205ad928d6002b3a236444ba7fce7c4186d91664cf79dfa40', 1, '2023-07-20 14:38:18'),
+(67, '4bf49456ff2f6532b295896a2d33be0b146ece142be271eda09ca50dd8f146c4', 1, '2023-07-20 17:42:48');
 
 -- --------------------------------------------------------
 
@@ -332,9 +357,23 @@ INSERT INTO `sesion` (`idsesion`, `key_ses`, `idusuario`, `fexpiracion_ses`) VAL
 
 CREATE TABLE `tratamiento` (
   `idtratamiento` int(11) NOT NULL,
-  `nom_tratamiento` varchar(50) NOT NULL,
+  `nom_tratamiento` varchar(100) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tratamiento`
+--
+
+INSERT INTO `tratamiento` (`idtratamiento`, `nom_tratamiento`, `estado`) VALUES
+(1, 'Examen de salud', 1),
+(2, 'Desparasitación y control de pulgas y garrapatas', 0),
+(3, 'Esterilización / Castración', 0),
+(4, 'Diagnóstico por imágenes (rayos X, ecografías, etc.)', 1),
+(5, 'Planificación nutricional', 1),
+(6, 'Atención y cuidados para animales mayores y envejecimiento saludable', 1),
+(7, 'Cuidados dentales y limpieza de dientes para prevenir problemas bucales', 1),
+(8, 'Atención y tratamiento de emergencias y casos urgentes.', 0);
 
 -- --------------------------------------------------------
 
@@ -419,6 +458,12 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `consulta`
   ADD PRIMARY KEY (`idconsulta`);
+
+--
+-- Indices de la tabla `consulta_tratamiento`
+--
+ALTER TABLE `consulta_tratamiento`
+  ADD PRIMARY KEY (`idconsulta_tratamiento`);
 
 --
 -- Indices de la tabla `especie`
@@ -515,6 +560,12 @@ ALTER TABLE `consulta`
   MODIFY `idconsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `consulta_tratamiento`
+--
+ALTER TABLE `consulta_tratamiento`
+  MODIFY `idconsulta_tratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `especie`
 --
 ALTER TABLE `especie`
@@ -554,13 +605,13 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
-  MODIFY `idtratamiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
