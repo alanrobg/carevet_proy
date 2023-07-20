@@ -63,12 +63,24 @@ $idatencion = $_REQUEST['idatencion'];
 
 $atencion = $atencionDAO->seleccionar_idatencion(new atencion($idatencion, null, null, null, null, null, null));
 
+//Datos del Cliente
 $idcliente = $atencion->getIdcliente();
+$cliente = $clienteDAO->seleccionar_idcliente(new cliente($idcliente, null, null, null, null, null, null, null, null, null));
+$namecli = $cliente->getNombre_cli(); $apellidocli = $cliente->getApellido_cli();
+
+//Datos del Trabajados
 $idtrabajador = $atencion->getIdusu();
+$trabajador = $usuarioDAO->seleccionar_idusuario(new usuario($idtrabajador, null, null, null, null, null, null, null, null, null, null, null));
+$nametrab = $trabajador->getNombre_usuario(); $apellidotrab = $trabajador->getApellido_usuario();
+
 $idmascota = $atencion->getIdmascota();
 $fecha = date("H:s  d/m/Y", strtotime($atencion->getFecha()));
 $com = $atencion->getComentario();
+
+//Datos del Usuario
 $idusuario = $atencion->getIdusuario();
+$usuario = $usuarioDAO->seleccionar_idusuario(new usuario($idusuario, null, null, null, null, null, null, null, null, null, null, null));
+$nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_usuario();
 
 
 ?>
@@ -82,7 +94,8 @@ $idusuario = $atencion->getIdusuario();
     <!--HEADER -->
     <?php include './Header.php';?>
     <!--HEADER -->
-    
+
+<?php include './Modal/Atencion_update.php';?>
 <main class="main-content">
     
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
@@ -98,21 +111,24 @@ $idusuario = $atencion->getIdusuario();
                 <form class="formulario" method="post" action="">
                     <table cellpadding="10" class="tabcell">
                         <tr class="tabcell">
-                            <td style="flex-basis: 30%"><label>ID ATENCION:</label></td>
-                            <td style="flex-basis: 70%">
-                                <input size="30" readonly="" type="text" class="form-control" required="" name="" value="<?=$idatencion?>">
-                            </td>
+                            <td><button type="button" data-bs-toggle="modal" data-bs-target="#update<?=$idatencion?>" class="btn btn-danger">Editar</button></td>
                         </tr>
                         <tr class="tabcell">
-                            <td style="flex-basis: 30%"><label>Cliente:</label></td>
+                            <td style="flex-basis: 30%"><label>Usuario:</label></td>
                             <td style="flex-basis: 70%">
-                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$com?>">
+                                <input size="30" readonly="" type="text" class="form-control" required="" name="" value="<?=$nameusu." ".$apellidousu?>">
                             </td>
                         </tr>
                         <tr class="tabcell">
                             <td style="flex-basis: 30%"><label>Trabajador:</label></td>
                             <td style="flex-basis: 70%">
-                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$com?>">
+                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$nametrab." ".$apellidotrab?>">
+                            </td>
+                        </tr>
+                        <tr class="tabcell">
+                            <td style="flex-basis: 30%"><label>Cliente:</label></td>
+                            <td style="flex-basis: 70%">
+                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$namecli." ".$apellidocli?>">
                             </td>
                         </tr>
                         <tr class="tabcell">
