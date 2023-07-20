@@ -61,12 +61,12 @@ if($accion=="create"){
 }
 
 if($accion=="update"){
-    
+    $idconsulta = $_REQUEST['idconsulta'];
     $consulta = new consulta($_REQUEST['idconsulta'], $_POST['idcliente'], null, $_POST['comentario'], $_POST['idusu'], $_POST['idmascota'], null);
     
     $consultaDAO->actualizar($consulta);
     
-    echo "<script>window.location.href='../Dashboard/Consulta_lista.php?data=$encoded_data';</script>";
+    echo "<script>window.location.href='../Dashboard/Consulta_detalle.php?data=$encoded_data&idconsulta=$idconsulta';</script>";
 } 
 
 if($accion=="delete"){

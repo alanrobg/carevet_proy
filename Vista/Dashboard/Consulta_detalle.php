@@ -63,12 +63,27 @@ $idconsulta = $_REQUEST['idconsulta'];
 
 $consulta = $consultaDAO->seleccionar_idconsulta(new consulta($idconsulta, null, null, null, null, null, null));
 
+
+
+
+//Datos del Cliente
 $idcliente = $consulta->getIdcliente();
+$cliente = $clienteDAO->seleccionar_idcliente(new cliente($idcliente, null, null, null, null, null, null, null, null, null));
+$namecli = $cliente->getNombre_cli(); $apellidocli = $cliente->getApellido_cli();
+
+//Datos del Trabajados
 $idtrabajador = $consulta->getIdusu();
+$trabajador = $usuarioDAO->seleccionar_idusuario(new usuario($idtrabajador, null, null, null, null, null, null, null, null, null, null, null));
+$nametrab = $trabajador->getNombre_usuario(); $apellidotrab = $trabajador->getApellido_usuario();
+
 $idmascota = $consulta->getIdmascota();
 $fecha = date("H:s  d/m/Y", strtotime($consulta->getFecha()));
 $com = $consulta->getComentario();
+
+//Datos del Usuario
 $idusuario = $consulta->getIdusuario();
+$usuario = $usuarioDAO->seleccionar_idusuario(new usuario($idusuario, null, null, null, null, null, null, null, null, null, null, null));
+$nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_usuario();
 
 
 ?>
@@ -83,6 +98,7 @@ $idusuario = $consulta->getIdusuario();
     <?php include './Header.php';?>
     <!--HEADER -->
     
+<?php include './Modal/Consulta_update.php';?>
 <main class="main-content">
     
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
@@ -98,21 +114,24 @@ $idusuario = $consulta->getIdusuario();
                 <form class="formulario" method="post" action="">
                     <table cellpadding="10" class="tabcell">
                         <tr class="tabcell">
-                            <td style="flex-basis: 30%"><label>ID CONSULTA:</label></td>
+                            <td><button type="button" data-bs-toggle="modal" data-bs-target="#update<?=$idconsulta?>" class="btn btn-danger">Editar</button></td>
+                        </tr>
+                        <tr class="tabcell">
+                            <td style="flex-basis: 30%"><label>Usuario:</label></td>
                             <td style="flex-basis: 70%">
-                                <input size="30" readonly="" type="text" class="form-control" required="" name="" value="<?=$idconsulta?>">
+                                <input size="30" readonly="" type="text" class="form-control" required="" name="" value="<?=$nameusu." ".$apellidousu?>">
+                            </td>
+                        </tr>
+                        <tr class="tabcell">
+                            <td style="flex-basis: 30%"><label>Veterinario:</label></td>
+                            <td style="flex-basis: 70%">
+                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$nametrab." ".$apellidotrab?>">
                             </td>
                         </tr>
                         <tr class="tabcell">
                             <td style="flex-basis: 30%"><label>Cliente:</label></td>
                             <td style="flex-basis: 70%">
-                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$com?>">
-                            </td>
-                        </tr>
-                        <tr class="tabcell">
-                            <td style="flex-basis: 30%"><label>Trabajador:</label></td>
-                            <td style="flex-basis: 70%">
-                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$com?>">
+                                <input readonly="" type="text" class="form-control" required="" name="" value="<?=$namecli." ".$apellidocli?>">
                             </td>
                         </tr>
                         <tr class="tabcell">
@@ -166,15 +185,6 @@ $idusuario = $consulta->getIdusuario();
                             $esteri = $esterilizacionDAO->seleccionar_idesterilizacion(new esterilizacion($mascota->getIdesterilizacion(), null))->getNom_esterilizacion();
                             $raza = $razaDAO->seleccionar_idraza(new raza($mascota->getIdraza(), null, null));
                             $especie = $especieDAO->seleccionar_idespecie(new especie($raza->getIdespecie(), null));
-                            foreach ($mascotaDAO->seleccionarxCliente($idcliente) as $kmas=>$dmas){
-                                $idmascota = $dmas->getIdmascota();
-                                $nom_mascota = $dmas->getNom_mascota();
-                                $actual = date("Y-m-d");
-                                $anios = date_diff(date_create($dmas->getNacimiento_mascota()), date_create($actual))->y;
-                                $meses = date_diff(date_create($dmas->getNacimiento_mascota()), date_create($actual))->m;
-                                $esteri = $esterilizacionDAO->seleccionar_idesterilizacion(new esterilizacion($dmas->getIdesterilizacion(), null))->getNom_esterilizacion();
-                                $raza = $razaDAO->seleccionar_idraza(new raza($dmas->getIdraza(), null, null));
-                                $especie = $especieDAO->seleccionar_idespecie(new especie($raza->getIdespecie(), null));
                             ?>
                             <tr>
                                 <td><?=$nom_mascota?></td>
@@ -241,11 +251,6 @@ $idusuario = $consulta->getIdusuario();
                                         </div>
                                     </div>
                             </tr>
-
-                            <?php    
-                            }
-
-                            ?>
                         <!--FIN FOREACH-->
                     </table>
                 </div>

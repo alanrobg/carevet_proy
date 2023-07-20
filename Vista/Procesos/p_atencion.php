@@ -61,12 +61,12 @@ if($accion=="create"){
 }
 
 if($accion=="update"){
-    
+    $idatencion = $_REQUEST['idatencion'];
     $atencion = new atencion($_REQUEST['idatencion'], $_POST['idcliente'], null, $_POST['comentario'], $_POST['idusu'], $_POST['idmascota'], null);
     
     $atencionDAO->actualizar($atencion);
     
-    echo "<script>window.location.href='../Dashboard/Atencion_lista.php?data=$encoded_data';</script>";
+    echo "<script>window.location.href='../Dashboard/Atencion_detalle.php?data=$encoded_data&idatencion=$idatencion';</script>";
 } 
 
 if($accion=="delete"){

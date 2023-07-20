@@ -1,12 +1,12 @@
-<div class="modal fade" id="update<?=$idconsulta?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="update<?=$idatencion?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-title">
         <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Consulta</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Atencion</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="../Procesos/p_consulta.php?data=<?=$encoded_data?>&accion=update&idconsulta=<?=$idconsulta?>" method="Post" enctype="multipart/form-data">
+            <form action="../Procesos/p_atencion.php?data=<?=$encoded_data?>&accion=update&idatencion=<?=$idatencion?>" method="Post" enctype="multipart/form-data">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <input type="text" value="<?=$usuario->getIdusuario()?>" name="idusuario" readonly="" hidden="">
                     <div class="input-group mb-3">
