@@ -14,7 +14,7 @@
                 <img src="../recursos/iconos/ajuste.png" width="50px" height="50px">
             </button>
             <ul class="dropdown-menu  dropdown-menu-dark">
-                <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
+                <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="../inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="./Atencion_lista.php?data=<?=$encoded_data?>">Atenciones</a></li>
                 <li><a class="dropdown-item" href="./Consulta_lista.php?data=<?=$encoded_data?>">Consultas Médicas</a></li>
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
@@ -44,7 +44,7 @@
             </button>
 
             <ul class="dropdown-menu  dropdown-menu-dark">
-                <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
+                <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="../inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="./Atencion_lista.php?data=<?=$encoded_data?>">Atenciones</a></li>
                 <li><a class="dropdown-item" href="./Consulta_lista.php?data=<?=$encoded_data?>">Consultas Médicas</a></li>
                 <li><a class="dropdown-item" href="./Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>

@@ -15,7 +15,7 @@ class mascotaDAO {
     //put your code here
     function seleccionar_idmascota(mascota $mascota){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
-        $sql = "select * from mascota where idmascota= ?";
+        $sql = "select * from mascota where idmascota = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
             echo "Error statement";

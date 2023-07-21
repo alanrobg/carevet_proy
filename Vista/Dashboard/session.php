@@ -1,9 +1,4 @@
 
-
-
-
-
-
 <?php
 
 //---------------------------------------------------------------
@@ -42,7 +37,7 @@ if(isset($_GET['data'])){
         //----------------------------------------
         $usuario =  $usuarioDAO->seleccionar_idusuario(new usuario($sesion->getIdusuario(), null, null, null, null, null, null, null, null, null, null, null));
         $acceso = $usuario->getIdarea();
-        if($acceso <= $privilegio){
+        if($acceso >= $privilegio){
             echo "<script>window.location.href='../inicio.php?data=$encoded_data';</script>";
         }
         if($usuario==false){
@@ -55,5 +50,4 @@ if(isset($_GET['data'])){
     echo "<script>window.location.href='../login.php?error=sesion_no_recibida';</script>";
 }
 //---------------------------------------------------------------
-
 ?>

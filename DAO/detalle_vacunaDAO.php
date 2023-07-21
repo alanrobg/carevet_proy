@@ -1,6 +1,7 @@
 <?php
 
 class detalle_vacunaDAO{
+    
     function seleccionar($id){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
         $sql ="select a.nom_vacuna,a.des_vacuna,b.fechadetallevac,b.fechaproximadetallevac,b.obsdetallevac "

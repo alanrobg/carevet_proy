@@ -5,6 +5,7 @@ Proyecto CareVet Veterinaria
 -->
 
 <?php
+$privilegio = 3;
 
 //---------------------------------------------------------------
 include_once './session.php';

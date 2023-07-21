@@ -6,6 +6,7 @@ Proyecto CareVet Veterinaria
 
 
 <?php
+$privilegio = 3;
 
 //---------------------------------------------------------------
 include_once './session.php';
@@ -145,7 +146,6 @@ document.addEventListener("keyup", e=>{
                                     $apecli = $cliente->getApellido_cli();
                                     $raza = $razaDAO->seleccionar_idraza(new raza($dm->getIdraza(), null, null));
                                     $especie = $especieDAO->seleccionar_idespecie(new especie($raza->getIdespecie(), null));
-                                    
                                 ?>
                                 <tr class="articulo">
                                     <td><?=$id?></td>
