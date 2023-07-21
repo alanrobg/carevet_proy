@@ -81,7 +81,7 @@ $consulta_tratamientoDAO = new consulta_tratamientoDAO();
 include_once '../../DAO/vacunaDAO.php';
 include_once '../../DAO/detalle_vacunaDAO.php';
 include_once '../../Modelo/vacuna.php';
-include_once '../../Modelo/detalle_vacuna2.php';
+include_once '../../Modelo/detalle_vacuna.php';
 
 $vacunaDAO = new vacunaDAO();
 $detalle_vacunaDAO = new detalle_vacunaDAO();

@@ -30,6 +30,25 @@ class vacunaDAO {
         return $vec;
     }
     
+    function seleccionar_idvacuna(Vacuna $vacuna){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql = "select * from vacunas where idvacuna= ?";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        $idvac = $vacuna->getIdvacuna();
+        mysqli_stmt_bind_param($stmt, "i", $idvac);
+        mysqli_stmt_execute($stmt);
+        $resultData = mysqli_stmt_get_result($stmt);
+        if($row = mysqli_fetch_assoc($resultData)){
+            $vacf = new vacuna($idvac,$row['nom_vacuna'],$row['des_vacuna']);
+            return $vacf;
+        }else{
+            return false;
+        }
+    }
+      
     function crear(vacuna $vacuna){
         $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
         $sql ="INSERT INTO vacunas (nom_vacuna,des_vacuna) VALUES (?,?)";
