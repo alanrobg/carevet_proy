@@ -21,6 +21,7 @@
                 <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Servicios_lista.php?data=<?=$encoded_data?>">Servicios</a></li>
                 <li><a class="dropdown-item" href="./Tratamiento_lista.php?data=<?=$encoded_data?>">Tratamientos</a></li>
+                <li><a class="dropdown-item" href="./vacuna_lista.php?data=<?=$encoded_data?>">Vacunas</a></li>
                 <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
                 <li><a class="dropdown-item" href="./Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                 <li><a class="dropdown-item" href="./Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
@@ -51,6 +52,7 @@
                 <li><a class="dropdown-item" href="./Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
                 <li><a class="dropdown-item" href="./Servicios_lista.php?data=<?=$encoded_data?>">Servicios</a></li>
                 <li><a class="dropdown-item" href="./Tratamiento_lista.php?data=<?=$encoded_data?>">Tratamientos</a></li>
+                <li><a class="dropdown-item" href="./vacuna_lista.php?data=<?=$encoded_data?>">Vacunas</a></li>
                 <li><a class="dropdown-item" href="./Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
                 <li><a class="dropdown-item" href="./Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                 <li><a class="dropdown-item" href="./Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>

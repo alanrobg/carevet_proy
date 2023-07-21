@@ -62,4 +62,19 @@ class vacunaDAO {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
+    
+    function actualizar(vacuna $vacuna){
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+        $sql ="UPDATE vacunas SET nom_vacuna = ?, des_vacuna = ? WHERE idvacuna=?";
+        $stmt = mysqli_stmt_init($cn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            echo "Error statement";
+        }
+        $id = $vacuna->getIdvacuna();
+        $nom_vacuna = $vacuna->getNom_vacuna();
+        $des_vacuna = $vacuna->getDes_vacuna();
+        mysqli_stmt_bind_param($stmt, "ssi",$nom_vacuna, $des_vacuna, $id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
 }
