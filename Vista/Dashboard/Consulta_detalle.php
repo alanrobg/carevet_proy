@@ -78,9 +78,12 @@ $consulta_tratamientoDAO = new consulta_tratamientoDAO();
 //---------------------------------------------------------------
 //Recursos Vacuna
 include_once '../../DAO/vacunaDAO.php';
+include_once '../../DAO/detalle_vacunaDAO.php';
 include_once '../../Modelo/vacuna.php';
+include_once '../../Modelo/detalle_vacuna2.php';
 
 $vacunaDAO = new vacunaDAO();
+$detalle_vacunaDAO = new detalle_vacunaDAO();
 //---------------------------------------------------------------
 
 
@@ -128,6 +131,7 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
 <?php include './Modal/Consulta_tratamiento_update.php';?>
 <?php include './Modal/vacuna_detalle.php';?>
 <?php include './Modal/vacuna_new.php';?>
+<?php include './Modal/vacuna_lista.php';?>
 <main class="main-content">
     
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
@@ -188,7 +192,7 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                             <td>&emsp;</td>
                             <td><button data-bs-toggle="modal" data-bs-target="#newVacuna" class="btn btn-primary">Nueva Aplicacion de Vacuna</button></td>
                             <td>&emsp;</td>
-                            <td><button data-bs-toggle="modal" data-bs-target="" class="btn btn-primary">Ver Vacunas</button></td>
+                            <td><button data-bs-toggle="modal" data-bs-target="#listaVacuna" class="btn btn-primary">Ver Vacunas</button></td>
                         
                         </tr>
                     </table>
@@ -332,19 +336,6 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                         }
                         ?>
                     </table>
-                                <?php
-                                foreach ($vacunaDAO->seleccionar() as $kvac => $dvac) {
-                                    $cad = "";
-                                    $cad2 = "";
-                                    if ($dvac->getIdvacuna() == $cad) {
-                                        $cad2 = "selected";
-                                    } else {
-                                        $cad2 = "";
-                                    }
-                                    ///DATOS DE TITULO
-                                    echo "<option value=".$dvac->getIdvacuna()." ".$cad2.">".$dvac->getNom_vacuna()."ECHO"."</option>";
-                                }
-                                ?>
                 </div>
             </div>
             

@@ -9,12 +9,13 @@ class detalle_vacuna {
     private $idMascota;
     private $idvacuna;
     
-    function __construct($id_detalle,$fecha_detalle,$fecha_proxdet,$idMascota,$idvacuna) {
-       $this->$id_detalle = $id_detalle;
-       $this->$fecha_detalle = $fecha_detalle;
-       $this->$fecha_proxdet = $fecha_proxdet;
-       $this->$idMascota=$idMascota;
-       $idvacuna->$idvacuna=$idvacuna;
+    function __construct($id_detalle,$fecha_detalle,$fecha_proxdet,$obs,$idMascota,$idvacuna) {
+       $this->id_detalle = $id_detalle;
+       $this->fecha_detalle = $fecha_detalle;
+       $this->fecha_proxdet = $fecha_proxdet;
+       $this->obs=$obs;
+       $this->idMascota=$idMascota;
+       $this->idvacuna=$idvacuna;
     }
     
     function getId_detalle() {
