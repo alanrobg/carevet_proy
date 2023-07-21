@@ -187,6 +187,7 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                             <td><h2>Mascota</h2></td>
                             <td>&emsp;</td>
                             <td><button data-bs-toggle="modal" data-bs-target="#newVacuna" class="btn btn-primary">Nueva Aplicacion de Vacuna</button></td>
+                            <td>&emsp;</td>
                             <td><button data-bs-toggle="modal" data-bs-target="" class="btn btn-primary">Ver Vacunas</button></td>
                         
                         </tr>
@@ -331,8 +332,22 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                         }
                         ?>
                     </table>
+                    <?php
+                                foreach ($vacunaDAO->seleccionar() as $kvac => $dvac) {
+                                    $cad = "";
+                                    $cad2 = "";
+                                    if ($dvac->getIdvacuna() == $cad) {
+                                        $cad2 = "selected";
+                                    } else {
+                                        $cad2 = "";
+                                    }
+                                    ///DATOS DE TITULO
+                                    echo "<option value=".$dvac->getIdvacuna()." ".$cad2.">".$dvac->getNom_vacuna()."ECHO"."</option>";
+                                }
+                                ?>
                 </div>
             </div>
+            
             
         </div>
         </div>

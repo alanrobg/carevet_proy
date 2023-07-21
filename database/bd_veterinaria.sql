@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2023 a las 02:42:34
+-- Tiempo de generación: 21-07-2023 a las 03:27:40
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -16,10 +16,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-DROP DATABASE IF EXISTS bd_veterinaria; 
-CREATE DATABASE bd_veterinaria;
-USE bd_veterinaria;
-
 
 --
 -- Base de datos: `bd_veterinaria`
@@ -376,8 +372,9 @@ INSERT INTO `sesion` (`idsesion`, `key_ses`, `idusuario`, `fexpiracion_ses`) VAL
 (67, '4bf49456ff2f6532b295896a2d33be0b146ece142be271eda09ca50dd8f146c4', 1, '2023-07-20 17:42:48'),
 (68, '6e4f79e74424caf6694f0941531f9051e6fcb0cfed1c108c646034860de8480b', 1, '2023-07-20 19:13:13'),
 (70, 'ecb1b7ea045cbaffc486089fe98ce73633e2ea35bf21408449e6ff4bdc1963bc', 1, '2023-07-20 19:49:41'),
-(71, '433db3eed6cf15268873972d9a63ed120f8864c5e1d4af98e540af58f541bf11', 1, '2023-07-20 20:21:42'),
-(72, 'efeb690fc756fa9ffffd6b2e27e0926631ef73df72f6582d178de0fe5ccc5b2a', 1, '2023-07-20 20:32:43');
+(72, 'efeb690fc756fa9ffffd6b2e27e0926631ef73df72f6582d178de0fe5ccc5b2a', 1, '2023-07-20 20:32:43'),
+(73, '0c1b61224fdc4dadf6f26e097ac026beb647da2523e030675337e3ef9198e716', 1, '2023-07-20 20:49:41'),
+(74, '7c01147d8e1f521ba4fb14c5107785c03d5bdd4262e31c2a740758c04eba576f', 1, '2023-07-20 21:21:52');
 
 -- --------------------------------------------------------
 
@@ -462,21 +459,21 @@ INSERT INTO `usuario_area` (`idusuario_area`, `nom_area`) VALUES
 --
 
 CREATE TABLE `vacunas` (
-  `id_vac` int(11) NOT NULL,
-  `nom_vac` varchar(45) DEFAULT NULL,
-  `des_vac` varchar(45) DEFAULT NULL
+  `idvacuna` int(11) NOT NULL,
+  `nom_vacuna` varchar(50) NOT NULL,
+  `des_vacuna` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `vacunas`
 --
 
-INSERT INTO `vacunas` (`id_vac`, `nom_vac`, `des_vac`) VALUES
-(101, 'VANGUARD PLUS 5L/CV', 'Vacuna contra la distemper'),
-(102, 'NOBIVAC PARVO-C', 'Vacuna contra el parvovirus'),
-(103, 'DEFENSOR 1', 'Vacuna contra la rabia'),
-(104, 'Felocell® 3 Gatos', 'Vacuna contra la panleucopenia felina'),
-(105, 'LEUKOCELL®', 'Vacuna contra el calicivirus felino');
+INSERT INTO `vacunas` (`idvacuna`, `nom_vacuna`, `des_vacuna`) VALUES
+(1, 'VANGUARD PLUS 5L/CV', 'Vacuna contra la distemper'),
+(2, 'NOBIVAC PARVO-C', 'Vacuna contra el parvovirus'),
+(3, 'DEFENSOR 1', 'Vacuna contra la rabia'),
+(4, 'Felocell 3 Gatos', 'Vacuna contra la panleucopenia felina'),
+(5, 'LEUKOCELL', 'Vacuna contra el calicivirus felino');
 
 --
 -- Índices para tablas volcadas
@@ -588,7 +585,7 @@ ALTER TABLE `usuario_area`
 -- Indices de la tabla `vacunas`
 --
 ALTER TABLE `vacunas`
-  ADD PRIMARY KEY (`id_vac`);
+  ADD PRIMARY KEY (`idvacuna`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -676,7 +673,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
@@ -700,7 +697,7 @@ ALTER TABLE `usuario_area`
 -- AUTO_INCREMENT de la tabla `vacunas`
 --
 ALTER TABLE `vacunas`
-  MODIFY `id_vac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `idvacuna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

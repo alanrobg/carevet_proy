@@ -17,13 +17,13 @@
                                 foreach ($vacunaDAO->seleccionar() as $kvac => $dvac) {
                                     $cad = "";
                                     $cad2 = "";
-                                    if ($dvac->getId_vac() == $cad) {
+                                    if ($dvac->getIdvacuna() == $cad) {
                                         $cad2 = "selected";
                                     } else {
                                         $cad2 = "";
                                     }
                                     ///DATOS DE TITULO
-                                    echo "<option value=".$dvac->getId_vac()." ".$cad2.">".$dvac->getNom_vac()."</option>";
+                                    echo "<option value=".$dvac->getIdvacuna()." ".$cad2.">".$dvac->getNom_vacuna()."ECHO"."</option>";
                                 }
                                 ?>
                             </select>

@@ -2,40 +2,38 @@
 
 class vacuna {
     
-    private $id_vac;
-    private $nom_vac;
-    private $des_vac;
+    private $idvacuna;
+    private $nom_vacuna;
+    private $des_vacuna;
     
-    function __construct($id_vac,$nom_vac,$des_va) {
-       $this->$id_vac = $id_vac;
-       $this->$nom_vac = $nom_vac;
-       $this->$des_va = $des_va;
+    public function __construct($idvacuna, $nom_vacuna, $des_vacuna) {
+        $this->idvacuna = $idvacuna;
+        $this->nom_vacuna = $nom_vacuna;
+        $this->des_vacuna = $des_vacuna;
     }
     
-    function getId_vac() {
-        return $this->id_vac;
+    public function getIdvacuna() {
+        return $this->idvacuna;
     }
 
-    function getNom_vac() {
-        return $this->nom_vac;
+    public function getNom_vacuna() {
+        return $this->nom_vacuna;
     }
 
-    function getDes_vac() {
-        return $this->des_vac;
+    public function getDes_vacuna() {
+        return $this->des_vacuna;
     }
 
-    function setId_vac($id_vac) {
-        $this->id_vac = $id_vac;
+    public function setIdvacuna($idvacuna) {
+        $this->idvacuna = $idvacuna;
     }
 
-    function setNom_vac($nom_vac) {
-        $this->nom_vac = $nom_vac;
+    public function setNom_vacuna($nom_vacuna) {
+        $this->nom_vacuna = $nom_vacuna;
     }
 
-    function setDes_vac($des_vac) {
-        $this->des_vac = $des_vac;
+    public function setDes_vacuna($des_vacuna) {
+        $this->des_vacuna = $des_vacuna;
     }
-
-
     
 }

@@ -25,7 +25,7 @@ foreach ($consulta_tratamientoDAO->seleccionarxConsulta($idconsulta) as $kcontra
                               foreach ($tratamientoDAO->seleccionarxDisponibles() as $ktrat=>$dtrat) {
                                   $cad = "";
                                   $cad2 = "";
-                                  if($dtrat->getIdtratamiento() == $tratamiento){
+                                  if($dtrat->getIdtratamiento() == $dcontrat->getIdtratamiento()){
                                       $cad2 = "selected";
                                   }else{
                                       $cad2 = "";
