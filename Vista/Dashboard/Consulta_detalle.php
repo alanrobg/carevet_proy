@@ -75,6 +75,14 @@ include_once '../../Modelo/consulta_tratamiento.php';
 $consulta_tratamientoDAO = new consulta_tratamientoDAO();
 //---------------------------------------------------------------
 
+//---------------------------------------------------------------
+//Recursos Vacuna
+include_once '../../DAO/vacunaDAO.php';
+include_once '../../Modelo/vacuna.php';
+
+$vacunaDAO = new vacunaDAO();
+//---------------------------------------------------------------
+
 
 $idconsulta = $_REQUEST['idconsulta'];
 
@@ -118,6 +126,8 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
 <?php include './Modal/Consulta_update.php';?>
 <?php include './Modal/Consulta_tratamiento_new.php';?>
 <?php include './Modal/Consulta_tratamiento_update.php';?>
+<?php include './Modal/vacuna_detalle.php';?>
+<?php include './Modal/vacuna_new.php';?>
 <main class="main-content">
     
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
@@ -176,8 +186,9 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                         <tr>
                             <td><h2>Mascota</h2></td>
                             <td>&emsp;</td>
-                            <td><button data-bs-toggle="modal" data-bs-target="#detailsvacuna" class="btn btn-primary">Vacunas</button></td>
-                            
+                            <td><button data-bs-toggle="modal" data-bs-target="#newVacuna" class="btn btn-primary">Nueva Aplicacion de Vacuna</button></td>
+                            <td><button data-bs-toggle="modal" data-bs-target="" class="btn btn-primary">Ver Vacunas</button></td>
+                        
                         </tr>
                     </table>
                 </div>

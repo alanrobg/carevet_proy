@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2023 a las 01:08:35
+-- Tiempo de generación: 21-07-2023 a las 02:42:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -16,6 +16,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+DROP DATABASE IF EXISTS bd_veterinaria; 
+CREATE DATABASE bd_veterinaria;
+USE bd_veterinaria;
+
 
 --
 -- Base de datos: `bd_veterinaria`
@@ -162,6 +166,28 @@ CREATE TABLE `consulta_tratamiento` (
 INSERT INTO `consulta_tratamiento` (`idconsulta_tratamiento`, `idconsulta`, `idtratamiento`, `fecha`, `comentario`) VALUES
 (1, 2, 2, '2023-07-19 08:24:17', 'Rt 1v1'),
 (2, 3, 1, '2023-07-20 13:34:08', 'V1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detallevacuna`
+--
+
+CREATE TABLE `detallevacuna` (
+  `id_dv` int(11) NOT NULL,
+  `fecha_dv` date DEFAULT NULL,
+  `fechaproxima_dv` date DEFAULT NULL,
+  `observacion_dv` varchar(45) DEFAULT NULL,
+  `id_mas` int(11) DEFAULT NULL,
+  `id_vac` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detallevacuna`
+--
+
+INSERT INTO `detallevacuna` (`id_dv`, `fecha_dv`, `fechaproxima_dv`, `observacion_dv`, `id_mas`, `id_vac`) VALUES
+(1, '2023-07-20', '2024-07-20', 'Vacuna Anual', 1, 101);
 
 -- --------------------------------------------------------
 
@@ -347,7 +373,11 @@ INSERT INTO `sesion` (`idsesion`, `key_ses`, `idusuario`, `fexpiracion_ses`) VAL
 (64, 'dfcaf1e2b37a26d792f375ede6db1e940cc2be6a543091e14857e1ca4ed5e518', 1, '2023-07-20 12:42:20'),
 (65, 'f7b0bfa787b103e1726c9901beefff2303b2b876f0058340d945a0e8326c0f07', 1, '2023-07-20 14:15:33'),
 (66, '9d632770e5e0af0205ad928d6002b3a236444ba7fce7c4186d91664cf79dfa40', 1, '2023-07-20 14:38:18'),
-(67, '4bf49456ff2f6532b295896a2d33be0b146ece142be271eda09ca50dd8f146c4', 1, '2023-07-20 17:42:48');
+(67, '4bf49456ff2f6532b295896a2d33be0b146ece142be271eda09ca50dd8f146c4', 1, '2023-07-20 17:42:48'),
+(68, '6e4f79e74424caf6694f0941531f9051e6fcb0cfed1c108c646034860de8480b', 1, '2023-07-20 19:13:13'),
+(70, 'ecb1b7ea045cbaffc486089fe98ce73633e2ea35bf21408449e6ff4bdc1963bc', 1, '2023-07-20 19:49:41'),
+(71, '433db3eed6cf15268873972d9a63ed120f8864c5e1d4af98e540af58f541bf11', 1, '2023-07-20 20:21:42'),
+(72, 'efeb690fc756fa9ffffd6b2e27e0926631ef73df72f6582d178de0fe5ccc5b2a', 1, '2023-07-20 20:32:43');
 
 -- --------------------------------------------------------
 
@@ -425,6 +455,29 @@ INSERT INTO `usuario_area` (`idusuario_area`, `nom_area`) VALUES
 (3, 'Recepcionista'),
 (4, 'Empleado');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vacunas`
+--
+
+CREATE TABLE `vacunas` (
+  `id_vac` int(11) NOT NULL,
+  `nom_vac` varchar(45) DEFAULT NULL,
+  `des_vac` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vacunas`
+--
+
+INSERT INTO `vacunas` (`id_vac`, `nom_vac`, `des_vac`) VALUES
+(101, 'VANGUARD PLUS 5L/CV', 'Vacuna contra la distemper'),
+(102, 'NOBIVAC PARVO-C', 'Vacuna contra el parvovirus'),
+(103, 'DEFENSOR 1', 'Vacuna contra la rabia'),
+(104, 'Felocell® 3 Gatos', 'Vacuna contra la panleucopenia felina'),
+(105, 'LEUKOCELL®', 'Vacuna contra el calicivirus felino');
+
 --
 -- Índices para tablas volcadas
 --
@@ -464,6 +517,12 @@ ALTER TABLE `consulta`
 --
 ALTER TABLE `consulta_tratamiento`
   ADD PRIMARY KEY (`idconsulta_tratamiento`);
+
+--
+-- Indices de la tabla `detallevacuna`
+--
+ALTER TABLE `detallevacuna`
+  ADD PRIMARY KEY (`id_dv`);
 
 --
 -- Indices de la tabla `especie`
@@ -526,6 +585,12 @@ ALTER TABLE `usuario_area`
   ADD PRIMARY KEY (`idusuario_area`);
 
 --
+-- Indices de la tabla `vacunas`
+--
+ALTER TABLE `vacunas`
+  ADD PRIMARY KEY (`id_vac`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -564,6 +629,12 @@ ALTER TABLE `consulta`
 --
 ALTER TABLE `consulta_tratamiento`
   MODIFY `idconsulta_tratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `detallevacuna`
+--
+ALTER TABLE `detallevacuna`
+  MODIFY `id_dv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `especie`
@@ -605,7 +676,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
@@ -624,6 +695,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `usuario_area`
   MODIFY `idusuario_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `vacunas`
+--
+ALTER TABLE `vacunas`
+  MODIFY `id_vac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
