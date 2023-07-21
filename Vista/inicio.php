@@ -147,7 +147,7 @@ if(isset($_GET['data'])){
             
             <div class="row my-3">
                 <div class="row my-3">
-                    <?php $area = $usuario_areaDAO->seleccionar_idusuario_area(new usuario_area($usuario->getIdearea(), null))->getNom_area(); ?>
+                    <?php $area = $usuario_areaDAO->seleccionar_idusuario_area(new usuario_area($usuario->getIdarea(), null))->getNom_area(); ?>
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <table width="" cellpadding="10">
                             <tr class="tabcell">

@@ -332,7 +332,7 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                         }
                         ?>
                     </table>
-                    <?php
+                                <?php
                                 foreach ($vacunaDAO->seleccionar() as $kvac => $dvac) {
                                     $cad = "";
                                     $cad2 = "";
