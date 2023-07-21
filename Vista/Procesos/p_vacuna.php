@@ -56,7 +56,7 @@ $detalleVacunaDAO = new detalle_vacunaDAO();
 //---------------------------------------------------------------
 
 $accion = $_REQUEST['accion'];
-$idconsulta = $_POST['idconsulta'];
+$idconsulta = $_REQUEST['idconsulta'];
 
 if($accion=="create"){
     
