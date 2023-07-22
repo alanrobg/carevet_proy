@@ -1,8 +1,8 @@
 version: "3.7"
 services:
-   database:
+   database2:
      image: mariadb:10.6.7
-     container_name: database
+     container_name: database2
      restart: unless-stopped
      tty: true
      ports:
@@ -12,7 +12,7 @@ services:
         - ./database:/docker-entrypoint-initdb.d
         #- ./database/conf-search.cnf:/etc/mysql/conf.d/my.cnf
      environment:
-        MYSQL_DATABASE: DB_NAME
+        MYSQL_DATABASE: "bdveterinaria"
         #MYSQL_USER: DB_USER
         MYSQL_PASSWORD: "demo"
         MYSQL_ROOT_PASSWORD: "123456"
