@@ -13,7 +13,7 @@
 class estadoDAO {
     //put your code here
     function seleccionar_idestado(estado $estado){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql = "select * from estado where idestado= ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -32,7 +32,7 @@ class estadoDAO {
     }
     
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql = "select * from estado";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

@@ -13,7 +13,7 @@
 class consulta_tratamientoDAO {
     //put your code here
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select * from consulta_tratamiento";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -30,7 +30,7 @@ class consulta_tratamientoDAO {
     }
     
     function seleccionar_idconsulta_tratamiento(consulta_tratamiento $consulta_tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" select * from consulta_tratamiento where idconsulta_tratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -49,7 +49,7 @@ class consulta_tratamientoDAO {
     }
     
     function seleccionarxConsulta($idconsulta){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" select * from consulta_tratamiento where idconsulta=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -67,7 +67,7 @@ class consulta_tratamientoDAO {
     }
     
     function crear(consulta_tratamiento $consulta_tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306"); 
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);  
         $sql ="INSERT INTO consulta_tratamiento (idconsulta, idtratamiento,fecha,comentario) VALUES (?,?,NOW(),?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -82,7 +82,7 @@ class consulta_tratamientoDAO {
     }
     
     function actualizar(consulta_tratamiento $consulta_tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="UPDATE consulta_tratamiento SET idconsulta = ?, idtratamiento = ?, comentario = ? WHERE idconsulta_tratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -99,7 +99,7 @@ class consulta_tratamientoDAO {
     
     
     function eliminar(consulta_tratamiento $consulta_tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" delete from consulta_tratamiento WHERE idconsulta_tratamiento = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

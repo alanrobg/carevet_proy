@@ -3,7 +3,7 @@
 class detalle_vacunaDAO{
     
     /*function seleccionar($id){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select a.nom_vacuna,a.des_vacuna,b.fechadetallevac,b.fechaproximadetallevac,b.obsdetallevac "
                 . "from vacunas a join detallevacuna b on a.idvacuna=b.idvacuna where idmascota=?";
         $stmt = mysqli_stmt_init($cn);
@@ -23,7 +23,7 @@ class detalle_vacunaDAO{
     }*/
     
     function seleccionar($id){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select * from detallevacuna where idmascota=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -42,7 +42,7 @@ class detalle_vacunaDAO{
     }
     
     function crear(detalle_vacuna $dv){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" INSERT INTO detallevacuna (fechadetallevac,fechaproximadetallevac,obsdetallevac,idmascota,idvacuna) VALUES (CURRENT_DATE,?,?,?,?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

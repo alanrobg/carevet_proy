@@ -13,7 +13,7 @@
 class atencion_servicioDAO {
     //put your code here
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select * from atencion_servicio";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -30,7 +30,7 @@ class atencion_servicioDAO {
     }
     
     function seleccionar_idtatencion_servicio(atencion_servicio $atencion_servicio){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" select * from atencion_servicio where idatencion_servicio=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -49,7 +49,7 @@ class atencion_servicioDAO {
     }
     
     function seleccionarxAtencion($idatencion){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select * from atencion_servicio where idatencion=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -67,7 +67,7 @@ class atencion_servicioDAO {
     }
     
     function crear(atencion_servicio $atencion_servicio){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306"); 
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);  
         $sql ="INSERT INTO atencion_servicio (idatencion, idservicio,fecha,comentario) VALUES (?,?,NOW(),?)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -82,7 +82,7 @@ class atencion_servicioDAO {
     }
     
     function actualizar(atencion_servicio $atencion_servicio){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="UPDATE atencion_servicio SET idatencion = ?, idservicio = ?, comentario = ? WHERE idatencion_servicio=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -99,7 +99,7 @@ class atencion_servicioDAO {
     
     
     function eliminar(atencion_servicio $atencion_servicio){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" delete from atencion_servicio WHERE idatencion_servicio = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

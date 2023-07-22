@@ -13,7 +13,7 @@
 class tratamientoDAO {
     //put your code here
     function seleccionar(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select * from tratamiento";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -30,7 +30,7 @@ class tratamientoDAO {
     }
     
     function seleccionarxDisponibles(){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="select * from tratamiento where estado = 1";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -47,7 +47,7 @@ class tratamientoDAO {
     }
     
     function seleccionar_idtratamiento(tratamiento $tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" select * from tratamiento where idtratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -66,7 +66,7 @@ class tratamientoDAO {
     }
     
     function crear(tratamiento $tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306"); 
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);  
         $sql ="INSERT INTO tratamiento (nom_tratamiento, estado) VALUES (?,1)";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -79,7 +79,7 @@ class tratamientoDAO {
     }
     
     function actualizar(tratamiento $tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="UPDATE tratamiento SET nom_tratamiento = ? WHERE idtratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -93,7 +93,7 @@ class tratamientoDAO {
     }
     
     function actualizarUp(tratamiento $tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="UPDATE tratamiento SET  estado = 1 WHERE idtratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -106,7 +106,7 @@ class tratamientoDAO {
     }
     
     function actualizarDown(tratamiento $tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql ="UPDATE tratamiento SET estado = 0 WHERE idtratamiento=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -119,7 +119,7 @@ class tratamientoDAO {
     }
     
     function eliminar(tratamiento $tratamiento){
-        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+       $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT); 
         $sql =" delete from tratamiento WHERE idtratamiento = ?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
