@@ -5,6 +5,7 @@ Proyecto CareVet Veterinaria
 -->
 
 <?php
+$privilegio = 3;
 
 //---------------------------------------------------------------
 include_once './session.php';
@@ -59,6 +60,22 @@ include_once '../../Modelo/especie.php';
 $especieDAO = new especieDAO();
 //---------------------------------------------------------------
 
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/servicioDAO.php';
+include_once '../../Modelo/servicio.php';
+
+$servicioDAO = new servicioDAO();
+//---------------------------------------------------------------
+
+//---------------------------------------------------------------
+//Recursos usuario
+include_once '../../DAO/atencion_servicioDAO.php';
+include_once '../../Modelo/atencion_servicio.php';
+
+$atencion_servicioDAO = new atencion_servicioDAO();
+//---------------------------------------------------------------
+
 $idatencion = $_REQUEST['idatencion'];
 
 $atencion = $atencionDAO->seleccionar_idatencion(new atencion($idatencion, null, null, null, null, null, null));
@@ -96,6 +113,8 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
     <!--HEADER -->
 
 <?php include './Modal/Atencion_update.php';?>
+<?php include './Modal/Atencion_servicio_new.php';?>
+<?php include './Modal/Atencion_servicio_update.php';?>
 <main class="main-content">
     
 <div class="container bg-light mt-5 rounded-3" id="Nosotros">
@@ -105,8 +124,7 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                 <h1 class="display-6 fw-bold text-black textoIzquierda">Atencion de Servicios</h1>
             </div>
         </div>
-        <div class="row my-3">
-            <!-- Inicio Reserva Temp-------------------------------------------------------------------------- -->  
+        <div class="row my-3"> 
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <form class="formulario" method="post" action="">
                     <table cellpadding="10" class="tabcell">
@@ -146,13 +164,12 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                     </table>
                 </form>
             </div>
+            
             <div class="row my-3">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <table>
                         <tr>
                             <td><h2>Mascota</h2></td>
-                            <td>&emsp;</td>
-                            <td><button data-bs-toggle="modal" data-bs-target="#detailsvacuna" class="btn btn-primary">Vacunas</button></td>
                         </tr>
                     </table>
                 </div>
@@ -228,15 +245,14 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                                                 </div>
                                                 <div class="input-group mb-3">
                                                   <label style="flex-basis: 40%" class="input-group-text">Raza:</label>
-                                                  <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$mascota->getIdraza()?>" readonly="">
+                                                  <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$raza->getNom_raza()?>" readonly="">
                                                 </div>
                                                 <div class="input-group mb-3">
                                                   <label style="flex-basis: 40%" class="input-group-text">Especie:</label>
-                                                  <input style="flex-basis: 60%" type="text" class="form-control" value="" readonly="">
+                                                  <input style="flex-basis: 60%" type="text" class="form-control" value="<?=$especie->getNom_especie()?>" readonly="">
                                                 </div>
                                                 <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update<?=$idmascota?>">Editar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -244,6 +260,53 @@ $nameusu = $usuario->getNombre_usuario(); $apellidousu = $usuario->getApellido_u
                                     </div>
                                 </div>
                         </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="row my-3">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <table>
+                        <tr>
+                            <td><h2>Servicios</h2></td>
+                            <td>&emsp;</td>
+                            <td><button data-bs-toggle="modal" data-bs-target="#neservice" class="btn btn-primary">Agregar Servicio</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <table border='' class="ttable" width="90%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ID_ATENCION</th>
+                                <th>Servicio</th>
+                                <th>Fecha</th>
+                                <th>Comentario</th>
+                                <th></th><th></th>
+                            </tr>
+                        </thead>
+
+                        <!--FOREACH-->
+                        <?php
+                        foreach ($atencion_servicioDAO->seleccionarxAtencion($idatencion) as $kas=>$das){
+                            //DATOS DE SERVICIO
+                            $idatencion_servicio = $das->getIdatencion_servicion();
+                            $servicio = $servicioDAO->seleccionar_idservicio(new servicio($das->getIdservicio(), null, null));
+                            $com = $das->getComentario();
+                        ?>
+                        <tr>
+                            <td><?=$idatencion_servicio?></td>
+                            <td><?=$das->getIdatencion()?></td>
+                            <td><?=$servicio->getNom_servicio()?></td>
+                            <td><?=date("H:m d/m/Y", strtotime($das->getFecha()))?></td>
+                            <td><textarea class="form-control" rows="3" cols="25" readonly=""><?=$com?></textarea></td>
+                            <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateservice<?=$idatencion_servicio?>">Editar</button></td>
+                            <td><a href="#" class="btn btn-danger">Eliminar</a></td>
+                        </tr>
+                        <?php    
+                        }
+                        ?>
                     </table>
                 </div>
             </div>

@@ -7,6 +7,8 @@ Proyecto CareVet Veterinaria
 
 <?php
 
+$privilegio = 1;
+
 //---------------------------------------------------------------
 include_once './session.php';
 //---------------------------------------------------------------
@@ -117,7 +119,7 @@ document.addEventListener("keyup", e=>{
                                     $apellido = $d->getApellido_usuario();
                                     $nom = $d->getNombre_usuario();
                                     $dni = $d->getDni_usuario();
-                                    $area = $usuario_areaDAO->seleccionar_idusuario_area(new usuario_area($d->getIdearea(), null))->getNom_area();
+                                    $area = $usuario_areaDAO->seleccionar_idusuario_area(new usuario_area($d->getIdarea(), null))->getNom_area();
                                     $direccion = $d->getDireccion_usuario();
                                     $nacimiento = date("d-m-Y", strtotime($d->getNacimiento_usuario()));
                                     $telefono = $d->getTelefono_usuario();

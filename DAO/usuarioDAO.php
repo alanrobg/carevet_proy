@@ -117,7 +117,7 @@ class usuarioDAO {
         $telf_usu = $user->getTelefono_usuario();
         $email_usu = $user->getCorreo_usuario();
         $cont_usu = $user->getContrato_usuario();
-        $ida_usu = $user->getIdearea();
+        $ida_usu = $user->getIdarea();
         $usu_usu = $user->getUsu_usuario();
         $hashedpwd = hash('sha256', $user->getPass_usuario());
         mysqli_stmt_bind_param($stmt, "ssssssssiss",$ape_usu,$nom_usu,$dni_usu,$dir_usu,$nac_usu,$telf_usu,$email_usu,$cont_usu,$ida_usu,
