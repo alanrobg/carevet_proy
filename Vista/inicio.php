@@ -86,12 +86,15 @@ if(isset($_GET['data'])){
                 <img src="./recursos/iconos/ajuste.png" width="50px" height="50px">
             </button>
             <ul class="dropdown-menu  dropdown-menu-dark">
-                <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
+                <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="./inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Atencion_lista.php?data=<?=$encoded_data?>">Atenciones</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Consulta_lista.php?data=<?=$encoded_data?>">Consultas Médicas</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
-                <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Servicios_lista.php?data=<?=$encoded_data?>">Servicios</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Tratamiento_lista.php?data=<?=$encoded_data?>">Tratamientos</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/vacuna_lista.php?data=<?=$encoded_data?>">Vacunas</a></li>
+                <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                 <li><a class="dropdown-item" href="./Dashboard/Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
                 <li><a class="dropdown-item" href="./Procesos/p_session.php?data=<?=$encoded_data?>&accion=delete"><b style="color: red">Salir</b></a></li>
@@ -113,12 +116,15 @@ if(isset($_GET['data'])){
                     </button>
 
                     <ul class="dropdown-menu  dropdown-menu-dark">
-                        <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
+                        <li><a class="dropdown-item rounded-3 hover:bg-gray-300 nodeco" href="./inicio.php?data=<?=$encoded_data?>">Inicio</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Atencion_lista.php?data=<?=$encoded_data?>">Atenciones</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Consulta_lista.php?data=<?=$encoded_data?>">Consultas Médicas</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Cliente_lista.php?data=<?=$encoded_data?>">Clientes</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Mascota_lista.php?data=<?=$encoded_data?>">Mascotas</a></li>
-                        <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="./Dashboard/Servicios_lista.php?data=<?=$encoded_data?>">Servicios</a></li>
+                        <li><a class="dropdown-item" href="./Dashboard/Tratamiento_lista.php?data=<?=$encoded_data?>">Tratamientos</a></li>
+                        <li><a class="dropdown-item" href="./Dashboard/Usuario_lista.php?data=<?=$encoded_data?>">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="./Dashboard/vacuna_lista.php?data=<?=$encoded_data?>">Vacunas</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Raza_lista.php?data=<?=$encoded_data?>">Razas</a></li>
                         <li><a class="dropdown-item" href="./Dashboard/Especie_lista.php?data=<?=$encoded_data?>">Especies</a></li>
                         <li><a class="dropdown-item" href="./Procesos/p_session.php?data=<?=$encoded_data?>&accion=delete"><b style="color: red">Salir</b></a></li>
@@ -143,7 +149,7 @@ if(isset($_GET['data'])){
             
             <div class="row my-3">
                 <div class="row my-3">
-                    <?php $area = $usuario_areaDAO->seleccionar_idusuario_area(new usuario_area($usuario->getIdearea(), null))->getNom_area(); ?>
+                    <?php $area = $usuario_areaDAO->seleccionar_idusuario_area(new usuario_area($usuario->getIdarea(), null))->getNom_area(); ?>
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <table width="" cellpadding="10">
                             <tr class="tabcell">

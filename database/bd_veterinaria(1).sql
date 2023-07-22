@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-07-2023 a las 03:27:40
+-- Tiempo de generación: 21-07-2023 a las 06:12:46
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `DB_NAME`
+-- Base de datos: `bd_veterinaria`
 --
 
 -- --------------------------------------------------------
@@ -170,20 +170,21 @@ INSERT INTO `consulta_tratamiento` (`idconsulta_tratamiento`, `idconsulta`, `idt
 --
 
 CREATE TABLE `detallevacuna` (
-  `id_dv` int(11) NOT NULL,
-  `fecha_dv` date DEFAULT NULL,
-  `fechaproxima_dv` date DEFAULT NULL,
-  `observacion_dv` varchar(45) DEFAULT NULL,
-  `id_mas` int(11) DEFAULT NULL,
-  `id_vac` int(11) DEFAULT NULL
+  `iddetallevac` int(11) NOT NULL,
+  `fechadetallevac` date NOT NULL,
+  `fechaproximadetallevac` date NOT NULL,
+  `obsdetallevac` varchar(45) NOT NULL,
+  `idmascota` int(11) NOT NULL,
+  `idvacuna` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `detallevacuna`
 --
 
-INSERT INTO `detallevacuna` (`id_dv`, `fecha_dv`, `fechaproxima_dv`, `observacion_dv`, `id_mas`, `id_vac`) VALUES
-(1, '2023-07-20', '2024-07-20', 'Vacuna Anual', 1, 101);
+INSERT INTO `detallevacuna` (`iddetallevac`, `fechadetallevac`, `fechaproximadetallevac`, `obsdetallevac`, `idmascota`, `idvacuna`) VALUES
+(1, '2023-07-20', '2024-07-20', 'Vacuna Anual', 1, 101),
+(6, '2023-07-20', '2023-08-21', 'vacuna mensual', 2, 101);
 
 -- --------------------------------------------------------
 
@@ -372,9 +373,19 @@ INSERT INTO `sesion` (`idsesion`, `key_ses`, `idusuario`, `fexpiracion_ses`) VAL
 (67, '4bf49456ff2f6532b295896a2d33be0b146ece142be271eda09ca50dd8f146c4', 1, '2023-07-20 17:42:48'),
 (68, '6e4f79e74424caf6694f0941531f9051e6fcb0cfed1c108c646034860de8480b', 1, '2023-07-20 19:13:13'),
 (70, 'ecb1b7ea045cbaffc486089fe98ce73633e2ea35bf21408449e6ff4bdc1963bc', 1, '2023-07-20 19:49:41'),
+(71, '433db3eed6cf15268873972d9a63ed120f8864c5e1d4af98e540af58f541bf11', 1, '2023-07-20 20:21:42'),
 (72, 'efeb690fc756fa9ffffd6b2e27e0926631ef73df72f6582d178de0fe5ccc5b2a', 1, '2023-07-20 20:32:43'),
-(73, '0c1b61224fdc4dadf6f26e097ac026beb647da2523e030675337e3ef9198e716', 1, '2023-07-20 20:49:41'),
-(74, '7c01147d8e1f521ba4fb14c5107785c03d5bdd4262e31c2a740758c04eba576f', 1, '2023-07-20 21:21:52');
+(76, '7403609a74dad6549af1f333f80cc3b74a1098a4771996f561bb22745708f0e7', 1, '2023-07-20 22:04:10'),
+(77, '2280b612c3ad6a9966cf43fab4aa82aeb6a7f010a29ad96b3e70d0395c07ddba', 1, '2023-07-20 22:09:43'),
+(78, '424bef60dfa6cdf3ecdbf1f76d56b876ce80d06bdbbf5c2294c1613cd03a419a', 1, '2023-07-20 22:17:45'),
+(79, 'f48b24f207a0dcecdb89e183cf3a6a6d513a1ba59158989f2000a34893615362', 1, '2023-07-20 22:18:29'),
+(80, '9f85e13c0d1625d19dec77773b180b2a45d2a465c999502deea75ccc33abd5b4', 1, '2023-07-20 22:20:07'),
+(85, 'c059c59266e9d6ee73cbf228e50c2b15145f4b9ed996ef6f4333b846a421e00b', 1, '2023-07-20 22:58:13'),
+(86, '04934bcfca114fc46449626fb242080efd055c85cc0768eb1bf6d12ffad429ef', 1, '2023-07-20 23:31:50'),
+(87, '399dbeffcd90e4f515758e4656788c470994895fa8d05b069a619c85b1fcacd2', 1, '2023-07-20 23:40:16'),
+(88, '23abbfef1287d60651bd475a0ff69e5a028cc672ce5e063c050e4d4b2d006354', 1, '2023-07-20 23:44:21'),
+(89, '3398189f2a3b4ab263c872df04c34ebc00451157bee5aa1d8ef293fb7f5bdc71', 1, '2023-07-20 23:55:49'),
+(90, '88e44eea59b3458cf70462a41ce11adf7ff1796b748fd8b4a5ef3de8627544b5', 1, '2023-07-21 00:01:36');
 
 -- --------------------------------------------------------
 
@@ -460,8 +471,8 @@ INSERT INTO `usuario_area` (`idusuario_area`, `nom_area`) VALUES
 
 CREATE TABLE `vacunas` (
   `idvacuna` int(11) NOT NULL,
-  `nom_vacuna` varchar(50) NOT NULL,
-  `des_vacuna` varchar(100) NOT NULL
+  `nom_vacuna` varchar(45) DEFAULT NULL,
+  `des_vacuna` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -469,11 +480,11 @@ CREATE TABLE `vacunas` (
 --
 
 INSERT INTO `vacunas` (`idvacuna`, `nom_vacuna`, `des_vacuna`) VALUES
-(1, 'VANGUARD PLUS 5L/CV', 'Vacuna contra la distemper'),
-(2, 'NOBIVAC PARVO-C', 'Vacuna contra el parvovirus'),
-(3, 'DEFENSOR 1', 'Vacuna contra la rabia'),
-(4, 'Felocell 3 Gatos', 'Vacuna contra la panleucopenia felina'),
-(5, 'LEUKOCELL', 'Vacuna contra el calicivirus felino');
+(101, 'VANGUARD PLUS 5L/CV', 'Vacuna contra la distemper'),
+(102, 'NOBIVAC PARVO-C', 'Vacuna contra el parvovirus'),
+(103, 'DEFENSOR 1', 'Vacuna contra la rabia'),
+(104, 'Felocell® 3 Gatos', 'Vacuna contra la panleucopenia felina'),
+(105, 'LEUKOCELL®', 'Vacuna contra el calicivirus felino');
 
 --
 -- Índices para tablas volcadas
@@ -519,7 +530,7 @@ ALTER TABLE `consulta_tratamiento`
 -- Indices de la tabla `detallevacuna`
 --
 ALTER TABLE `detallevacuna`
-  ADD PRIMARY KEY (`id_dv`);
+  ADD PRIMARY KEY (`iddetallevac`);
 
 --
 -- Indices de la tabla `especie`
@@ -631,7 +642,7 @@ ALTER TABLE `consulta_tratamiento`
 -- AUTO_INCREMENT de la tabla `detallevacuna`
 --
 ALTER TABLE `detallevacuna`
-  MODIFY `id_dv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iddetallevac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `especie`
@@ -673,7 +684,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `idsesion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
@@ -697,7 +708,7 @@ ALTER TABLE `usuario_area`
 -- AUTO_INCREMENT de la tabla `vacunas`
 --
 ALTER TABLE `vacunas`
-  MODIFY `idvacuna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idvacuna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

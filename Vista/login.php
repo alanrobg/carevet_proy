@@ -8,7 +8,7 @@ Proyecto CareVet Veterinaria
 
 //---------------------------------------------------------------
 //Administra codigos de errores
-$error = "";
+$error = "Usuario no encontrado";
 
 //---------------------------------------------------------------
 ?>

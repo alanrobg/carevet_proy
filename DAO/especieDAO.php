@@ -134,7 +134,7 @@ class especieDAO {
     }
     */
     function eliminar(especie $especie){
-        $cn = mysqli_connect(DB_HOST, DB_USER, "123456", DB_NAME, "3308");
+        $cn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
         $sql =" delete from especie WHERE idespecie=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

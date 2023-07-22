@@ -86,7 +86,11 @@ class razaDAO {
     }
     
     function actualizar(raza $raza){
+<<<<<<< HEAD
         $cn = mysqli_connect(DB_HOST, DB_USER, "123456", DB_NAME, "3308");
+=======
+        $cn = mysqli_connect("localhost", "root", "", "bd_veterinaria", "3306");
+>>>>>>> 0eca89d9a4fdda46c2e34e4f3495cb10c3c6facb
         $sql ="UPDATE raza SET nom_raza = ?, idespecie = ? WHERE idraza=?";
         $stmt = mysqli_stmt_init($cn);
         if(!mysqli_stmt_prepare($stmt, $sql)){

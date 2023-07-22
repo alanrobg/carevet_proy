@@ -71,7 +71,7 @@
                         </select>
                     </div>
                     <div class="input-group mb-3">
-                        <label style="flex-basis: 40%" class="input-group-text">Comentario:<label style="color: red">*</label></label>
+                        <label style="flex-basis: 40%" class="input-group-text">Comentario:</label>
                         <textarea class="form-control" cols="20" rows="3" name="comentario"><?=$com?></textarea>
                     </div>
                     <div class="modal-footer">

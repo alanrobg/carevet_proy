@@ -6,6 +6,7 @@ Proyecto CareVet Veterinaria
 
 
 <?php
+$privilegio = 3;
 
 //---------------------------------------------------------------
 include_once './session.php';
@@ -46,8 +47,6 @@ document.addEventListener("keyup", e=>{
 
 })
 </script>
-
-<!-------------------------------------------------SCRIPT PARA CLI_DUPLICADOS------------------------------------------------->
 
 <body id="cuerpo">
     
