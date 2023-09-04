@@ -95,8 +95,6 @@ if($accion=="update"){
         $mascotaDAO->actualizar($mascota);
 
         echo "<script>window.location.href='../Dashboard/Mascota_lista.php?data=$encoded_data';</script>";
-
-        
     }
     
 } 

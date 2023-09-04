@@ -3,7 +3,7 @@
 /* 
  * Proyecto CareVet Veterinaria
  */
-
+$privilegio = 3;
 
 //---------------------------------------------------------------
 //Recursos usuario

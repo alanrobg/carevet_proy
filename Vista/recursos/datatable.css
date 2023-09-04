@@ -30,7 +30,7 @@
     font-size: 100%;
     color: #a1a1a1;
 }
-
+/*
 .ttable {
  border-collapse: collapse;
  margin: 25px 0;
@@ -67,7 +67,7 @@
  font-weight: bold;
  color: #009879;
 }
-
+*/
 .container {
   display: flex;
   flex-direction: column;
@@ -233,6 +233,7 @@ h1 {
     table {
         width:100%;
     }
+    /*
     ttable {
          width:60%;
          border-collapse: collapse;
@@ -264,6 +265,7 @@ h1 {
         display: flex;
         text-align:center;
     }
+    */
     .container {
         display: flex;
         flex-direction: column;

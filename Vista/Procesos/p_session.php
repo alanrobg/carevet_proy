@@ -3,7 +3,7 @@
 /* 
  * Proyecto CareVet Veterinaria
  */
-
+$privilegio = 4;
 include '../Dashboard/session.php';
 
 //---------------------------------------------------------------

@@ -4,7 +4,7 @@
  * Proyecto CareVet Veterinaria
  */
 
-
+$privilegio = 1;
 //---------------------------------------------------------------
 //Recursos usuario
 include_once '../Dashboard/session.php';

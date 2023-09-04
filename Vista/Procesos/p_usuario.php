@@ -5,7 +5,7 @@
  * Proyecto CareVet Veterinaria
  */
 
-
+$privilegio = 1;
 include_once '../../Modelo/usuario.php';
 include_once '../../DAO/usuarioDAO.php';
 include_once '../../Modelo/sesion.php';

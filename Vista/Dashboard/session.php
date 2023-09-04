@@ -1,6 +1,5 @@
 
 <?php
-$privilegio = 3;
 //---------------------------------------------------------------
 //Recursos usuario
 include_once '../../DAO/usuarioDAO.php';
