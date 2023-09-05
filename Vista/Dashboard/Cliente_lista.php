@@ -450,7 +450,7 @@ $(document).ready(function () {
                                         </div>
                                         <div class="input-group mb-3">
                                             <label style="flex-basis: 40%" class="input-group-text">F. Registros:</label>
-                                            <input style="flex-basis: 60%" type="email" class="form-control" id="registrocliEditar" name="email_cli" value="">
+                                            <input style="flex-basis: 60%" type="text" class="form-control" id="registrocliEditar" name="email_cli" value="">
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
