@@ -1,0 +1,85 @@
+Fecha y hora: 2023-09-18 21:16:23
+apellido_cli: 4b124b
+nombre_cli: 41241
+dni_cli: 41241
+nacimiento_cli: 
+direccion_cli: 41241
+telefono_cli: b41241
+correo_cli: 
+registro_cli: 
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:16:45
+apellido_cli: 4b124b
+nombre_cli: 41241
+dni_cli: 41241
+nacimiento_cli: 2023-09-06
+direccion_cli: 41241
+telefono_cli: 14241251
+correo_cli: 
+registro_cli: 
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:17:05
+apellido_cli: 241241
+nombre_cli: 41241
+dni_cli: 414141
+nacimiento_cli: 2023-09-07
+direccion_cli: Lima
+telefono_cli: 21412412
+correo_cli: 
+registro_cli: 
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:20:55
+apellido_cli: 123
+nombre_cli: 1231
+dni_cli: 2313131
+nacimiento_cli: 2023-08-31
+direccion_cli: 312312
+telefono_cli: 312313
+correo_cli: 12313
+registro_cli: 
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:22:43
+apellido_cli: 3123
+nombre_cli: 12v31
+dni_cli: 2v13v1
+nacimiento_cli: 2023-08-30
+direccion_cli: 231231
+telefono_cli: 231231
+correo_cli: v1231v1
+registro_cli: 
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:26:21
+apellido_cli: 24112
+nombre_cli: 4141
+dni_cli: 421421
+nacimiento_cli: 2023-08-29
+direccion_cli: 414
+telefono_cli: 1241
+correo_cli: 1v1
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:26:41
+apellido_cli: Jonathan
+nombre_cli: Francesca
+dni_cli: 141241241
+nacimiento_cli: 
+direccion_cli: Alan
+telefono_cli: Yoni
+correo_cli: Peralta
+idusuario: 1
+
+Fecha y hora: 2023-09-18 21:26:54
+apellido_cli: 31231
+nombre_cli: 2414
+dni_cli: 141
+nacimiento_cli: 2023-09-07
+direccion_cli: 515
+telefono_cli: 1251
+correo_cli: 3212
+idusuario: 1
+
